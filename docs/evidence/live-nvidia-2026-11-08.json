@@ -1,0 +1,117 @@
+{
+  "scope": "One actual synthetic local-worker investigation, not a reliability guarantee",
+  "roomId": "eb3f02ae-549c-4173-8993-af2e7f942db9",
+  "runId": "4eadfb7c-bac6-4b9c-98c8-7d3060b347b3",
+  "sourceHashes": {
+    "legacy-v1": "a8ea4a53e446c98d8b989d499d508b8fada84aa63d71db4fff9eb00f2e5cfcc1",
+    "rewrite-v2": "1d193c4e8a74cf2fdb0ce2c7cea83964776851098f13b5bb10cf4d42fe5dacd2"
+  },
+  "outcome": {
+    "state": "completed",
+    "requestedModelId": "nvidia/nemotron-3-ultra-550b-a55b",
+    "actualModelIds": [
+      "nvidia/nemotron-3-ultra-550b-a55b"
+    ],
+    "calls": 8,
+    "correctionCalls": 0,
+    "retries": 0,
+    "toolRequests": 10,
+    "distinctCases": 5,
+    "durationMs": 81696,
+    "roles": {
+      "orchestrator": {
+        "state": "completed",
+        "summary": "Published unresolved review suggestions for human consideration.",
+        "durationMs": 81696
+      },
+      "behavior": {
+        "state": "completed",
+        "summary": "The day-30 mismatch stems from conflicting requirements between the operations handbook and migration ticket. The operations handbook (line 3) states \"Returns are accepted through day 30\" \u2014 an inclusive boundary (\u226430 days). The migration ticket (line 3) states \"Allow returns before day 30\" \u2014 an exclusive boundary (<30 days). Legacy-v1 implements the handbook's inclusive rule (eligible at age_days=30), while rewrite-v2 implements the ticket's exclusive rule (ineligible at age_days=30). This is not an off-by-one error but a deliberate requirement change: the migration ticket redefines the window from inclusive to exclusive. All other cases (day-29, day-31, missing-receipt, final-sale) match, confirming the boundary is the only difference.",
+        "citations": [
+          {
+            "artifact_id": "operations-handbook",
+            "start_line": 3,
+            "end_line": 3,
+            "quote": "Returns are accepted through day 30."
+          },
+          {
+            "artifact_id": "migration-ticket",
+            "start_line": 3,
+            "end_line": 3,
+            "quote": "Allow returns before day 30."
+          }
+        ],
+        "durationMs": 15030
+      },
+      "policy": {
+        "state": "completed",
+        "summary": "The two artifacts define conflicting policies for the 30-day return window. The operations-handbook (line 3) states \"Returns are accepted through day 30,\" which implies day 30 is inside the window (age_days <= 30). The migration-ticket (line 3) states \"Allow returns before day 30,\" which implies day 30 is outside the window (age_days < 30). The legacy-v1 baseline matches the handbook (day 30 eligible), while rewrite-v2 matches the ticket (day 30 outside_window). Since the handbook is typically the authoritative operations document, the approved policy per the handbook is that day 30 is inside the return window.",
+        "citations": [
+          {
+            "artifact_id": "operations-handbook",
+            "start_line": 3,
+            "end_line": 3,
+            "quote": "Returns are accepted through day 30."
+          },
+          {
+            "artifact_id": "migration-ticket",
+            "start_line": 3,
+            "end_line": 3,
+            "quote": "Allow returns before day 30."
+          }
+        ],
+        "durationMs": 11644
+      },
+      "regression": {
+        "state": "completed",
+        "summary": "This is an intentional policy change, not a regression. The operations handbook (line 3) states \"Returns are accepted through day 30\" \u2014 an inclusive boundary (\u226430 days) that matches legacy-v1 behavior (day-30 eligible). The migration ticket (line 3) states \"Allow returns before day 30\" \u2014 an exclusive boundary (<30 days) that matches rewrite-v2 behavior (day-30 outside_window). The test matrix confirms only the day-30 boundary differs (day-29 and day-31 match). Since the migration ticket explicitly redefines the window from inclusive to exclusive, the rewrite correctly implements the new documented requirement. This is a deliberate requirement change, not an unintended behavioral shift.",
+        "citations": [
+          {
+            "artifact_id": "operations-handbook",
+            "start_line": 3,
+            "end_line": 3,
+            "quote": "Returns are accepted through day 30."
+          },
+          {
+            "artifact_id": "migration-ticket",
+            "start_line": 3,
+            "end_line": 3,
+            "quote": "Allow returns before day 30."
+          }
+        ],
+        "durationMs": 36039
+      }
+    },
+    "proposals": [
+      {
+        "finding_refs": [
+          "day-30"
+        ],
+        "options": [
+          {
+            "choice": "include",
+            "explanation": "Per operations-handbook line 3: 'Returns are accepted through day 30' \u2014 day 30 is inside the return window (age_days <= 30). Legacy-v1 matches this inclusive interpretation. This is the established operations policy."
+          },
+          {
+            "choice": "exclude",
+            "explanation": "Per migration-ticket line 3: 'Allow returns before day 30' \u2014 day 30 is outside the return window (age_days < 30). Rewrite-v2 matches this exclusive interpretation. This reflects the new documented requirement for the migration."
+          }
+        ],
+        "evidence_refs": [
+          {
+            "artifact_id": "operations-handbook",
+            "start_line": 3,
+            "end_line": 3,
+            "quote": "Returns are accepted through day 30."
+          },
+          {
+            "artifact_id": "migration-ticket",
+            "start_line": 3,
+            "end_line": 3,
+            "quote": "Allow returns before day 30."
+          }
+        ]
+      }
+    ]
+  }
+}

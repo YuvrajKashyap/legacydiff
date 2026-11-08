@@ -1,0 +1,7 @@
+# Fixture hashes must survive checkouts on Windows, macOS and Linux.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.zip binary
+# Preserve the pinned Spacetime generator's output, including its final blank line.
+packages/client/generated/** whitespace=-blank-at-eof
