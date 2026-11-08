@@ -1,4 +1,7 @@
+import { localRuntime } from "./local-runtime";
 import { DbConnection } from "../../packages/client/generated";
+
+const runtime = localRuntime(process.env);
 
 export async function connectDatabase(
   token?: string,
@@ -10,8 +13,8 @@ export async function connectDatabase(
       reject(new Error("Spacetime connection timed out."));
     }, 10000);
     const pending = DbConnection.builder()
-      .withUri("ws://127.0.0.1:3000")
-      .withDatabaseName("legacydiff-local-v2")
+      .withUri(runtime.databaseUri)
+      .withDatabaseName(runtime.database)
       .withToken(token)
       .onConnect((connection, identity, issuedToken) => {
         connection

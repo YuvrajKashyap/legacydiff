@@ -19,7 +19,8 @@
     "packages/**/*.ts",
     "services/**/*.ts",
     "tests/**/*.ts",
-    "vite.config.ts"
+    "vite.config.ts",
+    "scripts/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

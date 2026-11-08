@@ -1,3 +1,4 @@
+import { localRuntime } from "./local-runtime";
 import { createServer } from "node:http";
 import { readFile, mkdir } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
@@ -7,6 +8,8 @@ import { connectDatabase } from "./database";
 import { roomFromWire } from "../../packages/contracts/wire";
 import { runPython } from "./runner";
 
+const runtime = localRuntime(process.env);
+
 const exportRequest = z
   .object({
     roomId: z.string().max(100),
@@ -14,7 +17,7 @@ const exportRequest = z
     decisionVersion: z.number().int().positive(),
   })
   .strict();
-const origins = new Set(["http://127.0.0.1:5174", "http://localhost:5174"]);
+const origins = new Set(runtime.origins);
 
 export function startPrivateHttp() {
   let activeExports = 0;
@@ -147,5 +150,5 @@ export function startPrivateHttp() {
       session?.connection.disconnect();
       activeExports--;
     }
-  }).listen(3001, "127.0.0.1");
+  }).listen(runtime.workerPort, "127.0.0.1");
 }

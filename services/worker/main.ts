@@ -1,3 +1,4 @@
+import { localRuntime } from "./local-runtime";
 import { workerConnection } from "./bootstrap";
 import { readCatalog } from "./catalog";
 import { catalogToWire } from "../../packages/contracts/wire";
@@ -5,6 +6,8 @@ import { executeJob } from "./jobs";
 import { startPrivateHttp } from "./http";
 import { createNvidiaTransport, probeModel, MODELS } from "../ai/index";
 import type { Artifact } from "../ai/evidence";
+
+const runtime = localRuntime(process.env);
 
 const session = await workerConnection();
 const connection = session.connection;
@@ -23,7 +26,7 @@ let catalog = await readCatalog(verified, persistArtifact);
 await connection.reducers.updateCatalog({ value: catalogToWire(catalog) });
 const http = startPrivateHttp();
 console.log(
-  "Private worker ready on 127.0.0.1:3001; trusted synthetic fixtures only.",
+  `Private worker ready on 127.0.0.1:${runtime.workerPort}; trusted synthetic fixtures only.`,
 );
 let stopping = false;
 const readinessController = new AbortController();

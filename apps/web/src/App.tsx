@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { frontendOnly, useLegacyDiff } from "../../../packages/client/react";
+import { useLegacyDiff } from "../../../packages/client/react";
 import type { LegacyDiffState } from "./view-model";
 import type { HomeView } from "./presentation";
 import { Home } from "./components/Home";
@@ -108,14 +108,12 @@ export default function App() {
           </span>
           <div>
             <strong>
-              {frontendOnly ? "Hosted frontend" : "Local workspace"}
+              {import.meta.env.VITE_INSTANCE_LABEL || "Working"} workspace
             </strong>
             <small title={state.identity}>
               {state.identity
                 ? `Identity ${state.identity.slice(0, 8)}`
-                : frontendOnly
-                  ? "Backend not connected"
-                  : "Restoring identity"}
+                : "Restoring identity"}
             </small>
           </div>
         </div>
@@ -123,15 +121,12 @@ export default function App() {
       <div className="app-main">
         <header className="topbar">
           <span className="topbar-label">
-            Behavior changes deserve a decision.
+            {import.meta.env.VITE_INSTANCE_LABEL || "Working"} �{" "}
+            {import.meta.env.VITE_INSTANCE_REVISION || "live changes"}
           </span>
           <div className="readiness">
             <Badge tone={state.ready ? "teal" : "amber"}>
-              {frontendOnly
-                ? "Frontend preview"
-                : state.ready
-                  ? "Spacetime connected"
-                  : "Connecting / stale"}
+              {state.ready ? "Spacetime connected" : "Connecting / stale"}
             </Badge>
             <Badge
               tone={
@@ -148,9 +143,8 @@ export default function App() {
         </header>
         {!state.ready && (
           <div className="connection-notice" role="status">
-            {frontendOnly
-              ? "You are viewing the deployed frontend from main. Live comparisons, collaboration and exports are unavailable until the hosted database and private worker are connected."
-              : "Waiting for a current authorized snapshot. Publishing and approvals are disabled."}
+            Waiting for a current authorized snapshot. Publishing and approvals
+            are disabled.
           </div>
         )}
         <div id="main-content" className="main-content">

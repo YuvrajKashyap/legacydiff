@@ -4,6 +4,10 @@ Turn a measured migration difference into a shared human decision and an executa
 
 The synthetic returns example executes a legacy implementation (`<= 30 days`) and a rewrite (`< 30 days`) against the same validated inputs. Two independent reviewers can discuss conflicting policy evidence, publish immutable proposal revisions, approve an exact revision, and observe the resulting real test failure or pass. The supplied corrected candidate is a separate immutable fixture, not an AI-generated repair.
 
+## Side-by-side browsing
+
+Run `npm run browse` for Main and Working tabs; use `npm run browse:refresh` after merging to main. See [local previews](docs/LOCAL_PREVIEWS.md) for first-time worktree registration, separate data and stop commands.
+
 ## Local startup (Windows)
 
 Requirements: Python 3.11+, npm, and Node. This checkout pins a project-local Node 24.22.1 executable for npm scripts and Spacetime CLI/server/SDK 2.14.1. The host Node 24.12 may emit an engine warning during installation; `npm exec -- node --version` must report 24.22.1 afterward. No account or paid service is needed for the deterministic flow.

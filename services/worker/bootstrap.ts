@@ -1,7 +1,10 @@
+import { localRuntime } from "./local-runtime";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { connectDatabase } from "./database";
+
+const runtime = localRuntime(process.env);
 
 export async function workerConnection() {
   await mkdir(".local", { recursive: true });
@@ -16,10 +19,13 @@ export async function workerConnection() {
   await promisify(execFile)(
     cli,
     [
+      ...(process.env.LEGACYDIFF_CLI_CONFIG
+        ? ["--config-path", process.env.LEGACYDIFF_CLI_CONFIG]
+        : []),
       "call",
       "--server",
-      "http://127.0.0.1:3000",
-      "legacydiff-local-v2",
+      runtime.databaseHttp,
+      runtime.database,
       "set_worker",
       JSON.stringify(session.identity),
     ],
