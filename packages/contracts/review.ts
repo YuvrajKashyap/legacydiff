@@ -1,3 +1,7 @@
+/**
+ * Review rules called by the backend.
+ * This file is shared for reuse, but the browser must not use it to decide whether an action is allowed.
+ */
 import type { ApprovedCase, Choice } from "./view-model";
 
 /** Fixed reviewed scope; model suggestions cannot silently expand approval. */

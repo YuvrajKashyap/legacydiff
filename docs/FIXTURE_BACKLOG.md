@@ -1,6 +1,6 @@
 # Modernization fixture backlog
 
-Source: [Modernization Use Cases and Validation Guide](https://chatgpt.com/space/page_a14b9ae17534819196c928339697de98), read November 8, 2026. These are synthetic proposals, not implemented features or measured results. The returns milestone remains first.
+Source: [Modernization Use Cases and Validation Guide](https://chatgpt.com/space/page_a14b9ae17534819196c928339697de98), read November 8, 2026. The original proposal table below is retained as planning context. Returns, pricing, accounts payable and permissions are now implemented in the Working source; the expansion has not been runtime-verified. Illustrative outputs in the table are not measured results.
 
 Modernization may address unsupported technology, maintenance cost, delivery, integration, scale, reliability, controls or security. Preserving all legacy behavior can preserve old defects. Keep observed baseline/candidate behavior, approved intended behavior, and independent requirements separate. A difference may be a regression, intentional change, corrected legacy defect or unresolved policy. Matching outputs can share defects. Crashes, invalid outputs and timeouts are errors.
 
@@ -15,8 +15,16 @@ Modernization may address unsupported technology, maintenance cost, delivery, in
 
 Before implementation, pin the input contract, source hashes, policy passages and effective scope, owner, independent requirements, test origin, command and runner version. Only executed outputs may become measured results. Security requirements cannot be waived by ordinary review to obtain parity.
 
-## Proposed next step, not authorized implementation
+## Original next-step proposal (superseded by authorized expansion)
 
 A tiny deny-overrides fixture is the preferred next scenario. Estimated effort: half a day for reviewed pure-function variants, independent requirement tests, manifest/export coverage and review; integrating a second scenario into the UI is additional work. It would demonstrate shared security defects but defer hosted and provider polish. Pricing is the business-impact alternative. Neither is added to runtime in this milestone.
 
 Stateful retries/concurrency, broader security scanning, cross-language execution and production readiness remain separate capabilities. Existing authorization/concurrency tests verify LegacyDiff itself; they do not test a customer's application. No arbitrary repositories, production data, automatic repair, paid service or external publication is authorized by this guide.
+
+## Working implementation checkpoint — November 8, 2026
+
+The user authorized all four bundled scenarios: returns, pricing, accounts payable and permissions. Working now includes a catalog-driven picker, versioned synthetic datasets, frozen source/evidence snapshots, paged measured cases, independent requirements, explicit policy proposals and revision-bound human approval. Approved decisions retain their own acceptance result and export action. AI selection remains optional and gated by actual catalog readiness; provider summaries do not become measured output or approval.
+
+All comparisons, Needs review and History use shared row summaries across classic returns and the new suite. The classic returns investigation remains available. Fulfillment, CRM deduplication and HTTP compatibility remain proposals, as do stateful/concurrency adapters and arbitrary customer code.
+
+Implementation is not runtime proof. The user requested fast iteration without tests/checks; no new suite execution, browser verification, build or test result is claimed. See VERIFICATION.md for the separate historical evidence and current pending scope.

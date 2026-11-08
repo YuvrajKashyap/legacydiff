@@ -1,3 +1,7 @@
+/**
+ * Check data returned by the original returns runner.
+ * A crashed execution is different from an output that fails an approved expectation.
+ */
 /** Strict JSON contracts shared by the private worker and investigation tools. */
 import { z } from "zod";
 

@@ -1,14 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readCatalog } from "../services/worker/catalog.ts";
-import { runPython } from "../services/worker/runner.ts";
+import { readCatalog } from "../backend/worker/catalog.ts";
+import { runPython } from "../backend/worker/runner.ts";
 import { runnerManifestSchema } from "../packages/contracts/validation.ts";
-import type { Artifact } from "../services/ai/evidence.ts";
+import type { Artifact } from "../backend/ai/evidence.ts";
 import type { Run } from "../packages/contracts/view-model.ts";
 
 async function loaderModule() {
-  const module = await import("../services/worker/evidence-config.ts").catch(
+  const module = await import("../backend/worker/evidence-config.ts").catch(
     () => null,
   );
   assert.ok(module, "worker evidence configuration exists");

@@ -1,0 +1,60 @@
+/* Give long explanations enough space to scan without making each line a separate card. */
+.ai-text {
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.ai-text > p {
+  white-space: normal;
+  margin: 12px 0;
+  line-height: inherit;
+}
+.ai-text > :first-child {
+  margin-top: 0;
+}
+.ai-text > :last-child {
+  margin-bottom: 0;
+}
+.ai-text ul,
+.ai-text ol {
+  padding-left: 24px;
+  margin: 12px 0;
+}
+.ai-text li {
+  margin: 7px 0;
+}
+.ai-text h4 {
+  margin: 20px 0 8px;
+  font-size: 14px;
+}
+.ai-text code {
+  font-size: 12px;
+  background: #f1f4f7;
+  border-radius: 3px;
+  padding: 1px 4px;
+}
+.ai-text pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 14px;
+  background: #f5f7fa;
+  border-radius: 6px;
+}
+.ai-text pre code {
+  padding: 0;
+  background: none;
+}
+.scenario-finding-body > .ai-text {
+  padding-top: 14px;
+}
+
+.ai-text {
+  max-width: 72ch;
+  line-height: 1.85;
+}
+.ai-text > p {
+  margin: 16px 0;
+}
+.ai-text li {
+  margin: 10px 0;
+}

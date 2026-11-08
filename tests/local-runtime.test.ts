@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { localRuntime } from "../services/worker/local-runtime";
+import { localRuntime } from "../backend/worker/local-runtime";
 
 test("local runtime isolates ports without permitting remote hosts", () => {
   const main = localRuntime({

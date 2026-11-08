@@ -1,13 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readCatalog } from "../services/worker/catalog.ts";
+import { readCatalog } from "../backend/worker/catalog.ts";
 import { catalogToWire } from "../packages/contracts/wire.ts";
 import type { DbConnection } from "../packages/client/generated/index.ts";
 import type { Job, Room } from "../packages/client/generated/types.ts";
-import type { investigate } from "../services/ai/index.ts";
+import type { investigate } from "../backend/ai/index.ts";
 
 test("matching measured run is persisted before completion and never fabricates an AI finding", async () => {
-  const { executeJob } = await import("../services/worker/jobs.ts");
+  const { executeJob } = await import("../backend/worker/jobs.ts");
   const catalog = await readCatalog();
   const wire = catalogToWire(catalog);
   const job: Job = {
@@ -76,7 +76,7 @@ test("matching measured run is persisted before completion and never fabricates 
 });
 
 test("investigation activity stores complete numbered JSON chunks without silent truncation", async () => {
-  const api = await import("../services/worker/jobs.ts");
+  const api = await import("../backend/worker/jobs.ts");
   assert.equal(typeof api.investigationActivity, "function");
   const result = {
     state: "partial",

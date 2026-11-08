@@ -11,7 +11,7 @@ from unittest.mock import patch
 
 from test_acceptance import APPROVED
 
-from services.runner import core, export
+from backend.runner import core, export
 
 
 def approval_snapshot():

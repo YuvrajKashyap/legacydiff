@@ -37,33 +37,53 @@ import {
 import AddCommentReducer from "./add_comment_reducer";
 import AdmitMemberReducer from "./admit_member_reducer";
 import ApproveProposalReducer from "./approve_proposal_reducer";
+import ApproveSuiteDraftReducer from "./approve_suite_draft_reducer";
+import ApproveSuiteProposalReducer from "./approve_suite_proposal_reducer";
+import AskSuiteReducer from "./ask_suite_reducer";
 import CancelRunReducer from "./cancel_run_reducer";
+import CancelSuiteReducer from "./cancel_suite_reducer";
 import ClaimJobReducer from "./claim_job_reducer";
+import ClaimSuiteJobReducer from "./claim_suite_job_reducer";
+import CommentSuiteReducer from "./comment_suite_reducer";
 import CommitJobReducer from "./commit_job_reducer";
+import CompleteSuiteJobReducer from "./complete_suite_job_reducer";
 import CreateRoomReducer from "./create_room_reducer";
+import DeferSuiteReducer from "./defer_suite_reducer";
 import HeartbeatReducer from "./heartbeat_reducer";
+import InvestigateSuiteReducer from "./investigate_suite_reducer";
 import PinEvidenceReducer from "./pin_evidence_reducer";
 import PublishProposalReducer from "./publish_proposal_reducer";
+import PublishSuiteProposalReducer from "./publish_suite_proposal_reducer";
 import RecordActivityReducer from "./record_activity_reducer";
 import RecordArtifactReducer from "./record_artifact_reducer";
 import RecordComparisonReducer from "./record_comparison_reducer";
+import RecordSuiteActivityReducer from "./record_suite_activity_reducer";
+import RecordSuiteTraceReducer from "./record_suite_trace_reducer";
 import RecoverExpiredJobsReducer from "./recover_expired_jobs_reducer";
+import RecoverSuiteJobsReducer from "./recover_suite_jobs_reducer";
 import RequestJoinReducer from "./request_join_reducer";
+import ResumeSuiteReducer from "./resume_suite_reducer";
 import SetReviewStateReducer from "./set_review_state_reducer";
 import SetWorkerReducer from "./set_worker_reducer";
 import StartRunReducer from "./start_run_reducer";
+import StartSuiteReducer from "./start_suite_reducer";
 import UpdateCatalogReducer from "./update_catalog_reducer";
+import UpdateSuiteCatalogReducer from "./update_suite_catalog_reducer";
 
 // Import all procedure arg schemas
 
 // Import all table schema definitions
 import ArtifactSnapshotRow from "./artifact_snapshot_table";
 import CatalogRow from "./catalog_table";
+import SuiteCatalogRow from "./suite_catalog_table";
 import VisiblePresenceRow from "./visible_presence_table";
 import VisibleRequestsRow from "./visible_requests_table";
 import VisibleRoomsRow from "./visible_rooms_table";
+import VisibleSuiteRunsRow from "./visible_suite_runs_table";
 import WorkerJobsRow from "./worker_jobs_table";
 import WorkerRoomsRow from "./worker_rooms_table";
+import WorkerSuiteJobsRow from "./worker_suite_jobs_table";
+import WorkerSuiteRunsRow from "./worker_suite_runs_table";
 
 /** Type-only namespace exports for generated type groups. */
 
@@ -91,6 +111,17 @@ const tablesSchema = __schema({
       { name: 'catalog_id_key', constraint: 'unique', columns: ['id'] },
     ],
   }, CatalogRow),
+  suiteCatalog: __table({
+    name: 'suite_catalog',
+    indexes: [
+      { accessor: 'id', name: 'suite_catalog_id_idx_btree', algorithm: 'btree', columns: [
+        'id',
+      ] },
+    ],
+    constraints: [
+      { name: 'suite_catalog_id_key', constraint: 'unique', columns: ['id'] },
+    ],
+  }, SuiteCatalogRow),
   visiblePresence: __table({
     name: 'visible_presence',
     indexes: [
@@ -112,6 +143,13 @@ const tablesSchema = __schema({
     constraints: [
     ],
   }, VisibleRoomsRow),
+  visibleSuiteRuns: __table({
+    name: 'visible_suite_runs',
+    indexes: [
+    ],
+    constraints: [
+    ],
+  }, VisibleSuiteRunsRow),
   workerJobs: __table({
     name: 'worker_jobs',
     indexes: [
@@ -126,6 +164,20 @@ const tablesSchema = __schema({
     constraints: [
     ],
   }, WorkerRoomsRow),
+  workerSuiteJobs: __table({
+    name: 'worker_suite_jobs',
+    indexes: [
+    ],
+    constraints: [
+    ],
+  }, WorkerSuiteJobsRow),
+  workerSuiteRuns: __table({
+    name: 'worker_suite_runs',
+    indexes: [
+    ],
+    constraints: [
+    ],
+  }, WorkerSuiteRunsRow),
 });
 
 /** The schema information for all reducers in this module. This is defined the same way as the reducers would have been defined in the server, except the body of the reducer is omitted in code generation. */
@@ -133,22 +185,38 @@ const reducersSchema = __reducers(
   __reducerSchema("add_comment", AddCommentReducer),
   __reducerSchema("admit_member", AdmitMemberReducer),
   __reducerSchema("approve_proposal", ApproveProposalReducer),
+  __reducerSchema("approve_suite_draft", ApproveSuiteDraftReducer),
+  __reducerSchema("approve_suite_proposal", ApproveSuiteProposalReducer),
+  __reducerSchema("ask_suite", AskSuiteReducer),
   __reducerSchema("cancel_run", CancelRunReducer),
+  __reducerSchema("cancel_suite", CancelSuiteReducer),
   __reducerSchema("claim_job", ClaimJobReducer),
+  __reducerSchema("claim_suite_job", ClaimSuiteJobReducer),
+  __reducerSchema("comment_suite", CommentSuiteReducer),
   __reducerSchema("commit_job", CommitJobReducer),
+  __reducerSchema("complete_suite_job", CompleteSuiteJobReducer),
   __reducerSchema("create_room", CreateRoomReducer),
+  __reducerSchema("defer_suite", DeferSuiteReducer),
   __reducerSchema("heartbeat", HeartbeatReducer),
+  __reducerSchema("investigate_suite", InvestigateSuiteReducer),
   __reducerSchema("pin_evidence", PinEvidenceReducer),
   __reducerSchema("publish_proposal", PublishProposalReducer),
+  __reducerSchema("publish_suite_proposal", PublishSuiteProposalReducer),
   __reducerSchema("record_activity", RecordActivityReducer),
   __reducerSchema("record_artifact", RecordArtifactReducer),
   __reducerSchema("record_comparison", RecordComparisonReducer),
+  __reducerSchema("record_suite_activity", RecordSuiteActivityReducer),
+  __reducerSchema("record_suite_trace", RecordSuiteTraceReducer),
   __reducerSchema("recover_expired_jobs", RecoverExpiredJobsReducer),
+  __reducerSchema("recover_suite_jobs", RecoverSuiteJobsReducer),
   __reducerSchema("request_join", RequestJoinReducer),
+  __reducerSchema("resume_suite", ResumeSuiteReducer),
   __reducerSchema("set_review_state", SetReviewStateReducer),
   __reducerSchema("set_worker", SetWorkerReducer),
   __reducerSchema("start_run", StartRunReducer),
+  __reducerSchema("start_suite", StartSuiteReducer),
   __reducerSchema("update_catalog", UpdateCatalogReducer),
+  __reducerSchema("update_suite_catalog", UpdateSuiteCatalogReducer),
 );
 
 /** The schema information for all procedures in this module. This is defined the same way as the procedures would have been defined in the server. */

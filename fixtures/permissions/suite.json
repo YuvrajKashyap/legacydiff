@@ -1,0 +1,69 @@
+{
+  "title": "Permission precedence and tenant isolation",
+  "description": "A deny-overrides rewrite can still share the legacy cross-tenant access defect.",
+  "decision_owner": "Security owner",
+  "policies": [
+    {
+      "id": "deny-overrides",
+      "label": "Enforce mandatory access controls",
+      "description": "Explicit deny, default deny, tenant isolation, and denied-response data suppression are non-waivable.",
+      "security_required": true
+    }
+  ],
+  "evidence": [
+    {
+      "id": "permissions-policy",
+      "title": "Approved access policy",
+      "file": "access_policy.md",
+      "sha256": "ffd8bfd8a9c24d8d4e8e14672240b37b88dd73943f85b3f960951b18b87ab244",
+      "line_start": 3,
+      "line_end": 4
+    },
+    {
+      "id": "permissions-migration",
+      "title": "Permission migration ticket",
+      "file": "migration_ticket.md",
+      "sha256": "127df5b66ab0ffa0d6a7c3594739b5649aeb4eec9741c7112c5fd2a4ac170441",
+      "line_start": 3,
+      "line_end": 4
+    },
+    {
+      "id": "permissions-requirements",
+      "title": "Independent requirements",
+      "file": "requirements.md",
+      "sha256": "18446bca8b8284902d1832c22ab4703b7a52dc9ea94d9f0e775220cf70cd4c9e",
+      "line_start": 3,
+      "line_end": 4
+    }
+  ],
+  "id": "permissions",
+  "baseline": "permissions-legacy-v1",
+  "candidate": "permissions-rewrite-v2",
+  "variants": [
+    {
+      "id": "permissions-legacy-v1",
+      "file": "legacy_v1.py",
+      "sha256": "07cc1ed39c38eeb893f8182fbe2ed08292c937e498ec701bd07e1ec105dcde85"
+    },
+    {
+      "id": "permissions-rewrite-v2",
+      "file": "rewrite_v2.py",
+      "sha256": "ba49064c0e6860abd0143971677057b5948cdd2855e3a006591224cdf6eab0c4"
+    },
+    {
+      "id": "permissions-corrected-v2",
+      "file": "corrected_v2.py",
+      "sha256": "4031d9051b52908b9f53eb1fdda2421fb04368bf5156fcc9b1e156cd07d02f7a"
+    }
+  ],
+  "dataset": {
+    "file": "corpus.json",
+    "version": "1",
+    "sha256": "144bf1d92dd1096d31cca9f3cb5254cb4f05e42a2edd5322d29e8ae02aefe1a2",
+    "count": 96,
+    "categories": [
+      "deny-precedence-and-defaults",
+      "tenant-isolation"
+    ]
+  }
+}

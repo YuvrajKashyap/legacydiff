@@ -1,3 +1,7 @@
+/**
+ * Let React screens read the latest shared workspace state.
+ * Connection and permission details stay outside the screen components.
+ */
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { createLegacyDiffClient } from "./connection";
 import type { LegacyDiffState } from "../contracts/view-model";

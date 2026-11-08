@@ -1,0 +1,1058 @@
+[
+  {
+    "id": "accounts-payable-001",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-002",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-003",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-004",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-005",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-006",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-007",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-008",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-009",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-010",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-011",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-012",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 0,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-013",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-014",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-015",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-016",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-017",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-018",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-019",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-020",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-021",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-022",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-023",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-024",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 999999,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-025",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-026",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-027",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-028",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-029",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-030",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-031",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-032",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-033",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-034",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-035",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-036",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000000,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-037",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-038",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-039",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-040",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-041",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-042",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "employee-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-043",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-044",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-045",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-046",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-047",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-048",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 1000001,
+      "tax_cents": 0,
+      "submitter": "manager-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-049",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-050",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-051",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-052",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-053",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "employee-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-054",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "employee-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-055",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-056",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-057",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-058",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-059",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "manager-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-060",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 980000,
+      "tax_cents": 98000,
+      "submitter": "manager-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-061",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-062",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-063",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-064",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-065",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "employee-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-066",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "employee-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-067",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-068",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-069",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-070",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-071",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "manager-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-072",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 99999,
+      "submitter": "manager-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-073",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-074",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-075",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-076",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-077",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "employee-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-078",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "employee-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-079",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-080",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-081",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-082",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-083",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "manager-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-084",
+    "category": "net-gross-boundary",
+    "input": {
+      "subtotal_cents": 900000,
+      "tax_cents": 100000,
+      "submitter": "manager-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-085",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-086",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "employee-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-087",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-088",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "employee-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-089",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "employee-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-090",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "employee-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-091",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-092",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "manager-a",
+      "approver_one": "manager-a",
+      "approver_two": "manager-a"
+    }
+  },
+  {
+    "id": "accounts-payable-093",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "finance-a"
+    }
+  },
+  {
+    "id": "accounts-payable-094",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "manager-a",
+      "approver_one": "employee-a",
+      "approver_two": "employee-b"
+    }
+  },
+  {
+    "id": "accounts-payable-095",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "manager-a",
+      "approver_one": "manager-b",
+      "approver_two": "finance-b"
+    }
+  },
+  {
+    "id": "accounts-payable-096",
+    "category": "approver-controls",
+    "input": {
+      "subtotal_cents": 10000000,
+      "tax_cents": 2000000,
+      "submitter": "manager-a",
+      "approver_one": "finance-a",
+      "approver_two": "finance-a"
+    }
+  }
+]

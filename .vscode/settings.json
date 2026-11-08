@@ -1,0 +1,12 @@
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/__pycache__": true,
+    "**/.ruff_cache": true,
+    "**/dist": true,
+    ".local": true,
+    "playwright-report": true,
+    "test-results": true
+  },
+  "explorer.compactFolders": false
+}
