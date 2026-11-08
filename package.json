@@ -1,0 +1,46 @@
+{
+  "name": "legacydiff",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build && npm run build:module",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p spacetime/spacetimedb",
+    "test": "tsx --test tests/review.test.ts tests/client-connection.test.ts tests/architecture.test.ts tests/worker-runner.test.ts tests/worker-ai.test.ts tests/worker-evidence.test.ts services/ai/*.test.ts apps/web/src/presentation.test.ts",
+    "test:python": "python -m unittest discover -s tests/python -v",
+    "worker": "tsx --env-file-if-exists=.env services/worker/main.ts",
+    "test:integration": "tsx --test tests/integration.test.ts",
+    "test:e2e": "playwright test",
+    "lint": "eslint .",
+    "format": "prettier --write apps packages services/ai services/worker spacetime/spacetimedb/src tests/*.ts *.ts *.json",
+    "format:check": "prettier --check apps packages services/ai services/worker spacetime/spacetimedb/src tests/*.ts *.ts *.json",
+    "db:start": "powershell -File scripts/start-database.ps1",
+    "db:publish": "powershell -File scripts/publish-local.ps1",
+    "build:module": "node scripts/spacetime.mjs build --module-path spacetime/spacetimedb"
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "spacetimedb": "2.14.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "latest",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "latest",
+    "eslint": "10.14.0",
+    "node": "24.22.1",
+    "prettier": "3.9.10",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "8.72.1",
+    "vite": "8.3.6"
+  },
+  "overrides": {
+    "minimatch": "11.0.5"
+  }
+}

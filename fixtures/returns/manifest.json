@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "fixture_version": 1,
+  "variants": [
+    {
+      "id": "legacy-v1",
+      "file": "legacy_v1.py",
+      "entry_point": "evaluate",
+      "revision": "synthetic-legacy-v1",
+      "contract": "returns-v1",
+      "sha256": "a8ea4a53e446c98d8b989d499d508b8fada84aa63d71db4fff9eb00f2e5cfcc1"
+    },
+    {
+      "id": "rewrite-v2",
+      "file": "rewrite_v2.py",
+      "entry_point": "evaluate",
+      "revision": "synthetic-rewrite-v2",
+      "contract": "returns-v1",
+      "sha256": "1d193c4e8a74cf2fdb0ce2c7cea83964776851098f13b5bb10cf4d42fe5dacd2"
+    },
+    {
+      "id": "corrected-v2",
+      "file": "corrected_v2.py",
+      "entry_point": "evaluate",
+      "revision": "synthetic-supplied-corrected-v2",
+      "contract": "returns-v1",
+      "sha256": "836468b161eec551d79dccf39bf0be80767d3163ef8d80336b23bd64b038e8c5"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "operations-handbook",
+      "file": "operations_handbook.md",
+      "sha256": "dfff9c9fa480784f3e778c66424fcdd0e777faa44b3f504b6bfd492571df4013",
+      "line_start": 3,
+      "line_end": 4
+    },
+    {
+      "id": "migration-ticket",
+      "file": "migration_ticket.md",
+      "sha256": "d66a4fde2013b92fc6df4f213cc718c084a3a8b418ee9fc8978a8c8bd54a8bbe",
+      "line_start": 3,
+      "line_end": 4
+    }
+  ],
+  "compatible_pairs": [
+    [
+      "legacy-v1",
+      "rewrite-v2"
+    ],
+    [
+      "legacy-v1",
+      "corrected-v2"
+    ]
+  ]
+}
