@@ -50,3 +50,9 @@ The browser-downloaded `test-results/e2e-two-independent-identi-daaf1-preview-va
 The modernization guide was accessible and read. Changes were limited to truthful result language, test-origin wording, an execution-error presentation regression test, and [six documented proposals](FIXTURE_BACKLOG.md). No additional scenario, schema redesign, scanner, arbitrary execution or automatic repair was implemented. Independent requirement findings for future customer fixtures are a documented gap, not a fabricated green state.
 
 Final release checks also verified the actual NVIDIA key was absent from all staged files, the production frontend and the downloaded ZIP. All five staged fixture hashes match the manifest; Git enforces LF line endings. Local documentation links resolve. The final frontend is replaceable through the documented client contract; architecture tests prohibit server/worker/business-policy imports into the browser.
+
+## Visual refinement checkpoint — November 8, 2026
+
+Presentation-only refinement raises small supporting text to 12px, makes measured output values more prominent, aligns specialist status cards, improves long-title wrapping, and adds 44px mobile controls and 16px mobile text inputs. Existing frontend/backend boundaries remain unchanged.
+
+Inspected the actual saved live investigation, finding/evidence review and setup dialog in the in-app browser at desktop and 390px mobile width. Mobile document width remained within the viewport. Fresh checks: 39 TypeScript tests passed, one optional timeout test skipped; both browser workflows passed (15.6 seconds), including stale approvals, denied exports, mobile keyboard review and runnable export. Typecheck, lint, formatting and production/module builds passed. The existing Zod circular-dependency build warning remains. Backend/Python integration suites were not repeated for these CSS-only changes; their previous results above remain separate evidence.

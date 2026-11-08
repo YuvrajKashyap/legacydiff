@@ -3,14 +3,15 @@
   border: none;
   padding: 0;
   color: #657087;
-  font-size: 11px;
+  font-size: 12px;
   margin-bottom: 19px;
 }
 .workspace-heading {
   margin-bottom: 18px;
 }
 .workspace-heading h1 {
-  font-size: 27px;
+  font-size: clamp(25px, 2.4vw, 32px);
+  overflow-wrap: anywhere;
 }
 .workspace-heading .button-row {
   justify-content: flex-end;
@@ -20,7 +21,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 10px 18px;
-  font-size: 10px;
+  font-size: 12px;
   color: #657087;
   margin-bottom: 23px;
 }
@@ -57,18 +58,18 @@
   margin-bottom: 23px;
 }
 .activity-strip > .eyebrow {
-  font-size: 9px;
+  font-size: 12px;
   margin: 0;
   flex-shrink: 0;
 }
 .activity-strip > .muted {
-  font-size: 11px;
+  font-size: 12px;
 }
 .activity-event {
   display: flex;
   gap: 6px;
   align-items: center;
-  font-size: 10px;
+  font-size: 12px;
 }
 .activity-event i {
   height: 5px;
@@ -77,7 +78,7 @@
   background: #8998ad;
 }
 .activity-event small {
-  font-size: 9px;
+  font-size: 12px;
   color: #657087;
 }
 .activity-event--completed i {
@@ -123,7 +124,7 @@
   border-right: 1px solid #dfe4ed;
 }
 .findings-sidebar select {
-  font-size: 11px;
+  font-size: 12px;
   padding: 8px 10px;
   margin-bottom: 17px;
 }
@@ -138,7 +139,7 @@
   box-shadow: 0 3px 8px #18253d05;
 }
 .finding-card .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   margin-bottom: 9px;
 }
 .finding-card strong {
@@ -147,7 +148,7 @@
   line-height: 1.5;
 }
 .finding-card p {
-  font-size: 10px;
+  font-size: 12px;
   color: #657087;
   margin: 8px 0 14px;
   overflow-wrap: anywhere;
@@ -161,7 +162,7 @@
 .finding-card > small {
   color: #657087;
   font-weight: 400;
-  font-size: 10px;
+  font-size: 12px;
 }
 .sidebar-empty {
   color: #657087;
@@ -185,7 +186,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 6px;
-  font-size: 10px;
+  font-size: 12px;
   color: #657087;
   margin: 19px 0 26px;
 }
@@ -215,7 +216,7 @@
   border-radius: 6px;
   margin-bottom: 12px;
   background: #fbfcfe;
-  font-size: 10px;
+  font-size: 12px;
   color: #657087;
 }
 .input-summary strong {
@@ -237,7 +238,7 @@
   background: #f8fcfc;
 }
 .result-panel .eyebrow {
-  font-size: 9px;
+  font-size: 12px;
   color: #7856a6;
   margin-bottom: 8px;
 }
@@ -250,8 +251,8 @@
 .result-panel > small {
   display: block;
   margin-top: 14px;
-  color: #7f8ba0;
-  font-size: 9px;
+  color: #657087;
+  font-size: 12px;
 }
 .output-fields {
   margin: 13px 0 0;
@@ -264,18 +265,19 @@
   padding: 5px 0;
 }
 .output-fields dt {
-  font-size: 10px;
+  font-size: 12px;
   color: #657087;
 }
 .output-fields dd {
-  font-size: 13px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
   font-weight: 650;
   margin: 0;
   overflow-wrap: anywhere;
   text-align: right;
 }
 .output-fields div:last-child dd {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
 }
 .evidence-section,
@@ -312,17 +314,17 @@
   gap: 10px;
 }
 .evidence-footer small {
-  font-size: 9px;
+  font-size: 12px;
   color: #657087;
   overflow-wrap: anywhere;
 }
 .evidence-card > a {
-  font-size: 10px;
+  font-size: 12px;
   display: inline-block;
   margin-top: 10px;
 }
 .evidence-card summary {
-  font-size: 10px;
+  font-size: 12px;
   color: #657087;
 }
 .rule-section {
@@ -354,7 +356,7 @@
   font-size: 14px;
 }
 .published-proposal small {
-  font-size: 10px;
+  font-size: 12px;
   color: #657087;
 }
 .published-proposal p {
@@ -388,11 +390,11 @@
 }
 .choice-picker strong {
   display: block;
-  font-size: 11px;
+  font-size: 12px;
 }
 .choice-picker small {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 5px;
 }
 .evidence-checks {
@@ -404,7 +406,7 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
 }
 .proposal-editor > .small {
@@ -420,7 +422,7 @@
   margin-top: 10px;
 }
 .discussion .button-row button {
-  font-size: 11px;
+  font-size: 12px;
   padding: 7px 10px;
 }
 .comment {
@@ -432,11 +434,11 @@
   display: flex;
   gap: 10px;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 12px;
 }
 .comment time {
-  color: #7f8a9e;
-  font-size: 10px;
+  color: #657087;
+  font-size: 12px;
 }
 .comment p {
   font-size: 12px;
@@ -445,13 +447,13 @@
   margin: 8px 0 0;
 }
 .validation-section > p {
-  font-size: 11px;
+  font-size: 12px;
 }
 .validation-section > .button-row {
   margin-top: 18px;
 }
 .validation-section > .button-row button {
-  font-size: 11px;
+  font-size: 12px;
 }
 .measured-case {
   border-bottom: 1px solid #e4e9f0;
@@ -504,12 +506,12 @@
 }
 .admission small {
   display: block;
-  font-size: 9px;
+  font-size: 12px;
   color: #657087;
   margin-top: 5px;
 }
 .admission button {
-  font-size: 11px;
+  font-size: 12px;
 }
 @media (max-width: 1100px) {
   .finding-layout {
