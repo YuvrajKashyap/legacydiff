@@ -90,7 +90,7 @@ function start(
 }
 async function stop() {
   // Verify PID ownership before terminating. A stale PID must never stop an unrelated process.
-  for (const entry of owned) {
+  for (const entry of [...owned].reverse()) {
     const result = spawnSync(
       "powershell.exe",
       [

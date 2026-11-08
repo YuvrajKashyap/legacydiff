@@ -21,6 +21,10 @@ function readRoute() {
 
 export default function App() {
   const state: LegacyDiffState = useLegacyDiff();
+  const instanceLabel = import.meta.env.VITE_INSTANCE_LABEL || "Working";
+  useEffect(() => {
+    document.title = `LegacyDiff | ${instanceLabel}`;
+  }, [instanceLabel]);
   const [route, setRoute] = useState(readRoute);
   const [setup, setSetup] = useState<{
     roomId?: string;
@@ -125,6 +129,7 @@ export default function App() {
             {import.meta.env.VITE_INSTANCE_REVISION || "live changes"}
           </span>
           <div className="readiness">
+            <Badge>{instanceLabel}</Badge>
             <Badge tone={state.ready ? "teal" : "amber"}>
               {state.ready ? "Spacetime connected" : "Connecting / stale"}
             </Badge>
