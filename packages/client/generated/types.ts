@@ -325,6 +325,32 @@ export const SourceVariant = __t.object("SourceVariant", {
 });
 export type SourceVariant = __Infer<typeof SourceVariant>;
 
+export const SuiteCatalog = __t.object("SuiteCatalog", {
+  id: __t.string(),
+  payload: __t.string(),
+  updatedAt: __t.u64(),
+});
+export type SuiteCatalog = __Infer<typeof SuiteCatalog>;
+
+export const SuiteJob = __t.object("SuiteJob", {
+  id: __t.string(),
+  roomId: __t.string(),
+  runId: __t.string(),
+  kind: __t.string(),
+  decisionVersion: __t.u32(),
+  state: __t.string(),
+  attempt: __t.u32(),
+  leaseUntil: __t.u64(),
+});
+export type SuiteJob = __Infer<typeof SuiteJob>;
+
+export const SuiteRun = __t.object("SuiteRun", {
+  id: __t.string(),
+  roomId: __t.string(),
+  payload: __t.string(),
+});
+export type SuiteRun = __Infer<typeof SuiteRun>;
+
 export const Validation = __t.object("Validation", {
   state: __t.string(),
   candidate: __t.string(),
@@ -357,9 +383,18 @@ export type VisibleRequests = __Infer<typeof VisibleRequests>;
 export const VisibleRooms = __t.object("VisibleRooms", {});
 export type VisibleRooms = __Infer<typeof VisibleRooms>;
 
+export const VisibleSuiteRuns = __t.object("VisibleSuiteRuns", {});
+export type VisibleSuiteRuns = __Infer<typeof VisibleSuiteRuns>;
+
 export const WorkerJobs = __t.object("WorkerJobs", {});
 export type WorkerJobs = __Infer<typeof WorkerJobs>;
 
 export const WorkerRooms = __t.object("WorkerRooms", {});
 export type WorkerRooms = __Infer<typeof WorkerRooms>;
+
+export const WorkerSuiteJobs = __t.object("WorkerSuiteJobs", {});
+export type WorkerSuiteJobs = __Infer<typeof WorkerSuiteJobs>;
+
+export const WorkerSuiteRuns = __t.object("WorkerSuiteRuns", {});
+export type WorkerSuiteRuns = __Infer<typeof WorkerSuiteRuns>;
 

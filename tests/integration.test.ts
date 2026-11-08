@@ -14,10 +14,17 @@ import {
   roomFromWire,
   validationToWire,
 } from "../packages/contracts/wire";
-import { workerConnection } from "../services/worker/bootstrap";
-import { readCatalog } from "../services/worker/catalog";
-import { connectDatabase } from "../services/worker/database";
-import { runPython } from "../services/worker/runner";
+import { workerConnection } from "../backend/worker/bootstrap";
+import { readCatalog } from "../backend/worker/catalog";
+import { connectDatabase } from "../backend/worker/database";
+import { runPython } from "../backend/worker/runner";
+
+// These checks change worker configuration and create approvals. Keep them away from the demo.
+if (process.env.LEGACYDIFF_DB_PORT !== "3012") {
+  throw new Error(
+    "Run database verification on the isolated local server: set LEGACYDIFF_DB_PORT=3012 first.",
+  );
+}
 
 async function eventually(
   check: () => boolean,

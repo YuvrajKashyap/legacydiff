@@ -5,15 +5,21 @@ Run `npm run browse` from the working checkout. The launcher starts background s
 | Version | Frontend | Database | Worker |
 | --- | --- | --- | --- |
 | Working | http://127.0.0.1:5174 | 127.0.0.1:3000 | 127.0.0.1:3001 |
-| Main | http://127.0.0.1:5175 | 127.0.0.1:3010 | 127.0.0.1:3011 |
+| Main | http://127.0.0.1:5174/main/ | 127.0.0.1:3000 | 127.0.0.1:3001 |
 
-The top bar identifies the version and startup commit. Working changes hot-reload; restart to update its commit label. Main is a separate detached managed worktree. Each checkout owns its .local database, signing keys, worker identity and exports. Browser identity is separated by origin and database URI. Main starts empty; existing Working records are preserved. No records or provider secrets are copied between checkouts. Main runs deterministically unless you deliberately configure its own private .env.
+Main and Working are two code versions of the same workspace. Both share Working's database, private worker, AI configuration, rooms, and browser identity. Main's internal port 5175 is proxied through Working's `/main/` path; use the URLs above, not port 5175 directly. Navigation and unsaved component drafts remain independent between tabs.
+
+Main is a separate detached managed worktree that starts only a frontend. It never publishes a backend or starts a database or worker. Its Vite configuration disables environment-file loading; no Main .env or provider key is copied into the renderer. Main uses its installed source dependencies and Working's Vite/React plugin tooling. Working's current backend is authoritative. Older Main code only displays the scenarios and contracts it understands; new scenarios appear after the frontend changes merge and Main is explicitly refreshed.
 
 - `npm run browse`: start or reuse the local services.
 - `npm run browse:stop`: stop only processes recorded and still verified as launcher-owned; preserve all data. Services started separately are left running.
 - `npm run browse:refresh`: stop launcher-owned services, fetch origin/main, update the clean Main worktree, reinstall its locked dependencies, and start both versions. This does not modify the Working checkout or merge any code. Dirty Main worktrees are refused. Stop a separately started Main service before refreshing.
 
-Logs are in each checkout's `.local/browse-*.log`. First startup installs Main's locked dependencies and publishes its module with `--delete-data=never`. Incompatible migrations fail rather than resetting data. If worker startup fails, inspect the log; do not clear .local to fix it. The standalone runtime and reviewed CLI executable are reused from Working; mutable data and credentials are not shared.
+Before changing from the older isolated-preview launcher, run `npm run browse:stop` to stop its recorded Main services. Existing Main `.local` data, keys, exports, and logs remain intact but are no longer used. Unrecorded services are left alone.
+
+New logs, including `browse-main-web.log`, are in Working's `.local` directory. Main installs its locked frontend dependencies when missing. Only Working publishes its module with `--delete-data=never`; Main never publishes. Incompatible migrations fail rather than resetting data. If startup fails, inspect the log; do not clear `.local` to fix it.
+
+Working proxies `/main` and WebSocket traffic to Main's internal listener. `scripts/main-preview.ts` sets Main's source root, `/main/` asset base, and HMR client routing through port 5174 without modifying the pinned checkout. Activated locally November 8, 2026: both pages loaded the same saved returns comparison and AI-ready status through the shared backend. Only the compilation and binding generation needed for startup were run; scenario execution and broader verification remain deferred at the user’s request.
 
 ## One-time checkout registration
 

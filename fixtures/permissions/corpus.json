@@ -1,0 +1,1154 @@
+[
+  {
+    "id": "permissions-001",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-002",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-003",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-004",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-005",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-006",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-007",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-008",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-009",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-010",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-011",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-012",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-013",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-014",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-015",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-016",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-017",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-018",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-019",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-020",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-021",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-022",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-023",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-024",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-025",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-026",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-027",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-028",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-029",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-030",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-031",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-032",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-033",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-034",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-035",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-036",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-037",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-038",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-039",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-040",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-041",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-042",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-043",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-044",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-045",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-046",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-047",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-048",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": false,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-049",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-050",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-051",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-052",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-053",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-054",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-055",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-056",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-057",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-058",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-059",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-060",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-061",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-062",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-063",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-064",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-065",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-066",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-067",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-068",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-069",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-070",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-071",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-072",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": false,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-073",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-074",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-075",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-076",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-077",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-078",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-079",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-080",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-081",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-082",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-083",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-084",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": false,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-085",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-086",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-087",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-088",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "acme",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-089",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-090",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-091",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-092",
+    "category": "deny-precedence-and-defaults",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "globex",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  },
+  {
+    "id": "permissions-093",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "read"
+    }
+  },
+  {
+    "id": "permissions-094",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "write"
+    }
+  },
+  {
+    "id": "permissions-095",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "delete"
+    }
+  },
+  {
+    "id": "permissions-096",
+    "category": "tenant-isolation",
+    "input": {
+      "authenticated": true,
+      "role_allow": true,
+      "explicit_deny": true,
+      "subject_tenant": "acme",
+      "resource_tenant": "globex",
+      "action": "unknown"
+    }
+  }
+]

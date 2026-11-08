@@ -1,3 +1,13 @@
+/**
+ * Connect the browser to the shared workspace.
+ * Restore its identity, listen for saved changes and send user actions to the database.
+ * This code never runs Python fixtures or holds AI keys.
+ */
+import {
+  suiteManifestSchema,
+  scenarioRunSchema,
+  type ScenarioActions,
+} from "../contracts/scenarios";
 import { DbConnection } from "./generated";
 import { catalogFromWire, roomFromWire } from "../contracts/wire";
 import type {
@@ -153,7 +163,64 @@ export function createLegacyDiffClient(options: ClientOptions = {}) {
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     },
   };
+  const scenarioActions: ScenarioActions = {
+    async ask(input) {
+      await readyConnection().reducers.askSuite(input);
+    },
+    async start(input) {
+      const current = readyConnection();
+      const roomId = `room-${input.requestId}`,
+        runId = `suite-${input.requestId}`;
+      await current.reducers.createRoom({
+        roomId,
+        name: input.name,
+        label: input.label,
+        requestId: `create-${input.requestId}`,
+      });
+      await readyConnection().reducers.startSuite({
+        roomId,
+        runId,
+        scenarioId: input.scenarioId,
+        baseline: input.baseline,
+        candidate: input.candidate,
+        modelId: input.modelId ?? "deterministic",
+        withAi: input.withAi ?? false,
+        requestId: input.requestId,
+      });
+      return { roomId, runId };
+    },
+    async publish(input) {
+      await readyConnection().reducers.publishSuiteProposal(input);
+    },
+    async approveDraft(input) {
+      await readyConnection().reducers.approveSuiteDraft(input);
+    },
+    async approve(input) {
+      await readyConnection().reducers.approveSuiteProposal(input);
+    },
+    async comment(input) {
+      await readyConnection().reducers.commentSuite(input);
+    },
+    async defer(input) {
+      await readyConnection().reducers.deferSuite(input);
+    },
+    async investigate(input) {
+      await readyConnection().reducers.investigateSuite(input);
+    },
+    async resume(input) {
+      await readyConnection().reducers.resumeSuite(input);
+    },
+    async cancel(input) {
+      await readyConnection().reducers.cancelSuite(input);
+    },
+    async export(input) {
+      await actions.exportBundle(input);
+    },
+  };
   let snapshot: LegacyDiffState = {
+    scenarios: [],
+    scenarioRuns: [],
+    scenarioActions,
     ready: false,
     identity: "",
     error: "",
@@ -201,7 +268,21 @@ export function createLegacyDiffClient(options: ClientOptions = {}) {
       );
       const catalog: Catalog | null =
         freshCatalog && catalogRow ? catalogFromWire(catalogRow.value) : null;
+      const suiteCatalog = [...connection.db.suiteCatalog.iter()].find(
+        (row) => row.id === "main",
+      );
+      const suiteFresh =
+        suiteCatalog &&
+        now - Number(suiteCatalog.updatedAt / 1000n) < CATALOG_MAX_AGE_MS;
+      const scenarios = suiteFresh
+        ? suiteManifestSchema.parse(JSON.parse(suiteCatalog.payload)).scenarios
+        : [];
+      const scenarioRuns = [...connection.db.visibleSuiteRuns.iter()].map(
+        (row) => scenarioRunSchema.parse(JSON.parse(row.payload)),
+      );
       update({
+        scenarios,
+        scenarioRuns,
         rooms,
         requests,
         presence,
@@ -287,6 +368,8 @@ export function createLegacyDiffClient(options: ClientOptions = {}) {
             connected.db.visibleRequests,
             connected.db.visiblePresence,
             connected.db.catalog,
+            connected.db.suiteCatalog,
+            connected.db.visibleSuiteRuns,
           ];
           for (const table of tables) {
             table.onInsert(scheduleRefresh);
@@ -311,6 +394,8 @@ export function createLegacyDiffClient(options: ClientOptions = {}) {
               });
             })
             .subscribe([
+              "SELECT * FROM suite_catalog",
+              "SELECT * FROM visible_suite_runs",
               "SELECT * FROM visible_rooms",
               "SELECT * FROM visible_requests",
               "SELECT * FROM visible_presence",

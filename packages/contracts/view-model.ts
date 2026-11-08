@@ -1,3 +1,12 @@
+/**
+ * Describe the data and actions available to the frontend.
+ * New screens use these types without depending on backend implementation details.
+ */
+import type {
+  ScenarioDefinition,
+  ScenarioRun,
+  ScenarioActions,
+} from "./scenarios";
 /** Presentation contract. The client adapter supplies only confirmed server data. */
 export type Choice = "include" | "exclude";
 export type Role = "engineer" | "reviewer";
@@ -192,6 +201,9 @@ export interface Actions {
   exportBundle(input: RunAddress & { decisionVersion: number }): Promise<void>;
 }
 export interface LegacyDiffState {
+  scenarios: ScenarioDefinition[];
+  scenarioRuns: ScenarioRun[];
+  scenarioActions: ScenarioActions;
   ready: boolean;
   identity: string;
   error: string;

@@ -1,0 +1,75 @@
+{
+  "title": "Returns window",
+  "description": "Inclusive versus exclusive day-30 returns with receipt and final-sale controls.",
+  "decision_owner": "Returns policy owner",
+  "policies": [
+    {
+      "id": "include",
+      "label": "Include day 30",
+      "description": "Accept returns through day 30.",
+      "security_required": false
+    },
+    {
+      "id": "exclude",
+      "label": "Exclude day 30",
+      "description": "Accept returns strictly before day 30.",
+      "security_required": false
+    }
+  ],
+  "evidence": [
+    {
+      "id": "operations-handbook",
+      "title": "Operations handbook",
+      "file": "operations_handbook.md",
+      "sha256": "dfff9c9fa480784f3e778c66424fcdd0e777faa44b3f504b6bfd492571df4013",
+      "line_start": 3,
+      "line_end": 4
+    },
+    {
+      "id": "migration-ticket",
+      "title": "Migration ticket",
+      "file": "migration_ticket.md",
+      "sha256": "d66a4fde2013b92fc6df4f213cc718c084a3a8b418ee9fc8978a8c8bd54a8bbe",
+      "line_start": 3,
+      "line_end": 4
+    },
+    {
+      "id": "returns-requirements",
+      "title": "Independent requirements",
+      "file": "requirements.md",
+      "sha256": "832cc99d36b45b566107476f25bbdcda25f28a6fbc4363db19f91896c17ca432",
+      "line_start": 3,
+      "line_end": 4
+    }
+  ],
+  "id": "returns",
+  "baseline": "legacy-v1",
+  "candidate": "rewrite-v2",
+  "variants": [
+    {
+      "id": "legacy-v1",
+      "file": "legacy_v1.py",
+      "sha256": "a8ea4a53e446c98d8b989d499d508b8fada84aa63d71db4fff9eb00f2e5cfcc1"
+    },
+    {
+      "id": "rewrite-v2",
+      "file": "rewrite_v2.py",
+      "sha256": "1d193c4e8a74cf2fdb0ce2c7cea83964776851098f13b5bb10cf4d42fe5dacd2"
+    },
+    {
+      "id": "corrected-v2",
+      "file": "corrected_v2.py",
+      "sha256": "836468b161eec551d79dccf39bf0be80767d3163ef8d80336b23bd64b038e8c5"
+    }
+  ],
+  "dataset": {
+    "file": "corpus.json",
+    "version": "1",
+    "sha256": "3a330bf78dab25981ce80bad9c9ec4a725002ffb8ff565e67b49331bd5a518e0",
+    "count": 96,
+    "categories": [
+      "range-and-controls",
+      "window-boundary"
+    ]
+  }
+}

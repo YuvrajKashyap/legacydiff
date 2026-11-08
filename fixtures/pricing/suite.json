@@ -1,0 +1,75 @@
+{
+  "title": "Volume pricing",
+  "description": "An already-discounted quote can receive an unintended second volume discount.",
+  "decision_owner": "Pricing owner",
+  "policies": [
+    {
+      "id": "no-stacking",
+      "label": "Honor the included discount",
+      "description": "Do not apply another volume discount when the quoted price includes it.",
+      "security_required": false
+    },
+    {
+      "id": "stack-discount",
+      "label": "Apply the additional discount",
+      "description": "Apply the volume discount at quantity 100 or greater even to an already-discounted quote.",
+      "security_required": false
+    }
+  ],
+  "evidence": [
+    {
+      "id": "pricing-agreement",
+      "title": "Pricing agreement",
+      "file": "pricing_agreement.md",
+      "sha256": "43f6fafbece5fa6c66177dc63e015d693e5c07a86c7e161e7f1571b650d98fb5",
+      "line_start": 3,
+      "line_end": 4
+    },
+    {
+      "id": "pricing-migration",
+      "title": "Pricing migration ticket",
+      "file": "migration_ticket.md",
+      "sha256": "ac5f73a150ac3da98c51b8bcab86eac44233338f0f8adc40a96ce83203cfe003",
+      "line_start": 3,
+      "line_end": 4
+    },
+    {
+      "id": "pricing-requirements",
+      "title": "Independent requirements",
+      "file": "requirements.md",
+      "sha256": "7d6dace6101bd9056e22c8000d9eb4dae1817112c4f7b0220902c3579728ecc9",
+      "line_start": 3,
+      "line_end": 4
+    }
+  ],
+  "id": "pricing",
+  "baseline": "pricing-legacy-v1",
+  "candidate": "pricing-rewrite-v2",
+  "variants": [
+    {
+      "id": "pricing-legacy-v1",
+      "file": "legacy_v1.py",
+      "sha256": "b7843317c1162e828d4c5c253d8696e2262148a8a7e03a762f903e6ac9ae75c6"
+    },
+    {
+      "id": "pricing-rewrite-v2",
+      "file": "rewrite_v2.py",
+      "sha256": "5fbf43b78044b51519d912a09b66ea5343356cfe5cda7357eb414c65f90c3358"
+    },
+    {
+      "id": "pricing-corrected-v2",
+      "file": "corrected_v2.py",
+      "sha256": "97ecd2f38b02ab9f249c85ec69f38606cda4a65a8fb4aedfca204238dbcf3392"
+    }
+  ],
+  "dataset": {
+    "file": "corpus.json",
+    "version": "1",
+    "sha256": "8bf93745466b5e2b0e1371640f0519288f921ea4a9e777e274e3f2151daed58d",
+    "count": 96,
+    "categories": [
+      "discount-threshold",
+      "rounding-currency-and-bounds"
+    ]
+  }
+}

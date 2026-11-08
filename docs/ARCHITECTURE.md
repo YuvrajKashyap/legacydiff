@@ -16,7 +16,7 @@ The worker's loopback HTTP endpoint offers health and authenticated export only.
 
 ## A normal change
 
-- Visual change: edit `apps/web`, retain `useLegacyDiff()` and typed actions, run type/lint/browser checks.
+- Visual change: edit `frontend`, retain `useLegacyDiff()` and typed actions, run type/lint/browser checks.
 - Operation/data change: update contracts and backend together, regenerate bindings, update the adapter, then run actual authorization/concurrency tests.
 - Fixture change: review the source, refresh the explicit manifest hash, start a new run. Old source snapshots and validation remain visible; never relabel a changed file as the old candidate.
 - Provider change: update server-only adapter, validate tool arguments/citations, and run a real readiness probe before enabling it.

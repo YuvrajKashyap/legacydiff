@@ -1,0 +1,962 @@
+[
+  {
+    "id": "returns-001",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-002",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-003",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-004",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-005",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-006",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-007",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-008",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-009",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-010",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-011",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-012",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 0,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-013",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-014",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-015",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-016",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-017",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-018",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-019",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-020",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-021",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-022",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-023",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-024",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 1,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-025",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-026",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-027",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-028",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-029",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-030",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-031",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-032",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-033",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-034",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-035",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-036",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 29,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-037",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-038",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-039",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-040",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-041",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-042",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-043",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-044",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-045",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-046",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-047",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-048",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 30,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-049",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-050",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-051",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-052",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-053",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-054",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-055",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-056",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-057",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-058",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-059",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-060",
+    "category": "window-boundary",
+    "input": {
+      "age_days": 31,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-061",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-062",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-063",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-064",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-065",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-066",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-067",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-068",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-069",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-070",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-071",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-072",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 60,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-073",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-074",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-075",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-076",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-077",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-078",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-079",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-080",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-081",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-082",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-083",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-084",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 364,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-085",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-086",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 0,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-087",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-088",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 0,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-089",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-090",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 10000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-091",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-092",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 10000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-093",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-094",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 1000000,
+      "has_receipt": false,
+      "final_sale": true
+    }
+  },
+  {
+    "id": "returns-095",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": false
+    }
+  },
+  {
+    "id": "returns-096",
+    "category": "range-and-controls",
+    "input": {
+      "age_days": 365,
+      "price_cents": 1000000,
+      "has_receipt": true,
+      "final_sale": true
+    }
+  }
+]

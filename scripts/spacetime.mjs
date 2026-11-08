@@ -1,3 +1,7 @@
+/**
+ * Find the installed local Spacetime command and pass through its arguments.
+ * Package scripts do not need to know its machine-specific path.
+ */
 import { spawnSync } from "node:child_process";
 import { resolve } from "node:path";
 import process from "node:process";

@@ -71,7 +71,7 @@ function resolveModule(file: string, specifier: string): string | undefined {
 
 test("frontend runtime import graph cannot reach worker, server, or approval business rules", () => {
   const pending = [
-    ...sourceFiles(join(root, "apps/web/src")),
+    ...sourceFiles(join(root, "frontend/src")),
     ...sourceFiles(join(root, "packages/client")),
   ];
   const visited = new Set<string>();
@@ -86,10 +86,7 @@ test("frontend runtime import graph cannot reach worker, server, or approval bus
       const target = resolveModule(file, specifier);
       if (!target) continue;
       const path = relative(root, target).replaceAll("\\", "/");
-      if (
-        /^(services|spacetime)\//.test(path) ||
-        path === "packages/contracts/review.ts"
-      ) {
+      if (/^backend\//.test(path) || path === "packages/contracts/review.ts") {
         violations.push(`${relative(root, file)} imports ${path}`);
       } else pending.push(target);
     }

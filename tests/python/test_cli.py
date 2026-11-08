@@ -7,7 +7,7 @@ import unittest
 class CliTests(unittest.TestCase):
     def call(self, value):
         result = subprocess.run(
-            [sys.executable, "-m", "services.runner.cli"],
+            [sys.executable, "-m", "backend.runner.cli"],
             input=json.dumps(value).encode(),
             check=False,
             capture_output=True,

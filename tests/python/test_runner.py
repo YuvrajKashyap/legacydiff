@@ -1,6 +1,6 @@
 import unittest
 
-from services.runner import core
+from backend.runner import core
 
 
 class ContractTests(unittest.TestCase):

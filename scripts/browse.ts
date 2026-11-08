@@ -1,3 +1,7 @@
+/**
+ * Start the two local code previews and their shared backend.
+ * Record which background processes we start so stopping previews cannot stop unrelated programs.
+ */
 import { spawn, spawnSync } from "node:child_process";
 import {
   existsSync,
@@ -115,20 +119,31 @@ async function stop() {
   owned = [];
   writeFileSync(statePath, "[]");
 }
-async function stack(cwd: string, label: "Main" | "Working") {
-  const main = label === "Main";
-  const dbPort = main ? 3010 : 3000;
-  const workerPort = main ? 3011 : 3001;
-  const webPort = main ? 5175 : 5174;
+async function workingStack() {
+  const cwd = root;
+  const label = "Working";
+
+  const dbPort = 3000;
+  const workerPort = 3001;
+  const webPort = 5174;
   mkdirSync(join(cwd, ".local"), { recursive: true });
   const node = join(cwd, "node_modules/node/bin/node.exe");
   if (!existsSync(node)) {
     run(process.execPath, [process.env.npm_execpath!, "ci"], cwd);
   }
-  if (!existsSync(join(cwd, "spacetime/spacetimedb/node_modules/typescript"))) {
+  if (
+    !existsSync(
+      join(cwd, "backend/database/spacetimedb/node_modules/typescript"),
+    )
+  ) {
     run(
       process.execPath,
-      [process.env.npm_execpath!, "ci", "--prefix", "spacetime/spacetimedb"],
+      [
+        process.env.npm_execpath!,
+        "ci",
+        "--prefix",
+        "backend/database/spacetimedb",
+      ],
       cwd,
     );
   }
@@ -139,21 +154,20 @@ async function stack(cwd: string, label: "Main" | "Working") {
     throw new Error(
       "Run scripts/setup-local.ps1 in the working checkout first.",
     );
-  const config = join(cwd, ".local/browse-cli.toml");
-  const cliPrefix = main ? ["--config-path", config] : [];
+
   const env = {
     ...process.env,
     LEGACYDIFF_DB_PORT: String(dbPort),
     LEGACYDIFF_WORKER_PORT: String(workerPort),
     LEGACYDIFF_WEB_PORT: String(webPort),
     SPACETIME_CLI: cli,
-    ...(main ? { LEGACYDIFF_CLI_CONFIG: config } : {}),
+
     VITE_SPACETIME_URI: `ws://127.0.0.1:${dbPort}`,
     VITE_SPACETIME_DATABASE: "legacydiff-local-v2",
     VITE_WORKER_URL: `http://127.0.0.1:${workerPort}`,
     VITE_INSTANCE_LABEL: label,
-    VITE_WORKSPACE_OWNER: main ? "YuvrajKashyap" : "Working",
-    VITE_INSTANCE_REVISION: `${git(["rev-parse", "--short", "HEAD"], cwd)}${main ? "" : " · live changes"}`,
+    VITE_WORKSPACE_OWNER: "Main",
+    VITE_INSTANCE_REVISION: `${git(["rev-parse", "--short", "HEAD"], cwd)} · live changes`,
   };
   if (!(await listening(dbPort))) {
     run(node, ["scripts/create-local-keys.mjs"], cwd);
@@ -182,15 +196,29 @@ async function stack(cwd: string, label: "Main" | "Working") {
     run(
       cli,
       [
-        ...cliPrefix,
         "publish",
         "legacydiff-local-v2",
         "--server",
         `http://127.0.0.1:${dbPort}`,
         "--module-path",
-        "spacetime/spacetimedb",
+        "backend/database/spacetimedb",
         "--no-config",
         "--delete-data=never",
+        "--yes",
+      ],
+      cwd,
+      env,
+    );
+    run(
+      cli,
+      [
+        "generate",
+        "--lang",
+        "typescript",
+        "--out-dir",
+        "packages/client/generated",
+        "--module-path",
+        "backend/database/spacetimedb",
         "--yes",
       ],
       cwd,
@@ -202,7 +230,7 @@ async function stack(cwd: string, label: "Main" | "Working") {
         "--env-file-if-exists=.env",
         "--import",
         "tsx",
-        "services/worker/main.ts",
+        "backend/worker/main.ts",
       ],
       cwd,
       env,
@@ -237,6 +265,37 @@ async function stack(cwd: string, label: "Main" | "Working") {
   );
 }
 
+async function mainPreview(mainPath: string) {
+  // Main is only a renderer. Both tabs use the same backend, private worker,
+  // browser origin, and storage key; no Main schema is ever published.
+  mkdirSync(join(mainPath, ".local"), { recursive: true });
+  if (!existsSync(join(mainPath, "node_modules/react"))) {
+    run(process.execPath, [process.env.npm_execpath!, "ci"], mainPath);
+  }
+  if (!(await listening(5175))) {
+    const env = {
+      ...process.env,
+      LEGACYDIFF_MAIN_PREVIEW_ROOT: mainPath,
+      VITE_SPACETIME_URI: "ws://127.0.0.1:3000",
+      VITE_SPACETIME_DATABASE: "legacydiff-local-v2",
+      VITE_WORKER_URL: "http://127.0.0.1:3001",
+      VITE_INSTANCE_LABEL: "Main",
+      VITE_WORKSPACE_OWNER: "Main",
+      VITE_INSTANCE_REVISION: git(["rev-parse", "--short", "HEAD"], mainPath),
+    };
+    start(
+      join(root, "node_modules/node/bin/node.exe"),
+      ["node_modules/vite/bin/vite.js", "--config", "scripts/main-preview.ts"],
+      root,
+      env,
+      "main-web",
+    );
+    await waitFor(5175);
+  }
+  console.log(
+    `Main: http://127.0.0.1:5174/main/ (${git(["rev-parse", "--short", "HEAD"], mainPath)})`,
+  );
+}
 if (!["start", "stop", "refresh"].includes(mode))
   throw new Error("Use browse, browse:stop or browse:refresh.");
 if (mode === "stop") {
@@ -274,14 +333,9 @@ if (mode === "stop") {
     git(["fetch", "origin", "main"]);
     git(["checkout", "--detach", "origin/main"], mainPath);
     run(process.execPath, [process.env.npm_execpath!, "ci"], mainPath);
-    run(
-      process.execPath,
-      [process.env.npm_execpath!, "ci", "--prefix", "spacetime/spacetimedb"],
-      mainPath,
-    );
   }
-  await stack(mainPath, "Main");
-  await stack(root, "Working");
+  await workingStack();
+  await mainPreview(mainPath);
   console.log(
     "Keep these two URLs in Codex's in-app browser. No external browser is opened.",
   );

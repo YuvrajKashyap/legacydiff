@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from services.runner import core, export
+from backend.runner import core, export
 
 APPROVED = [
     {

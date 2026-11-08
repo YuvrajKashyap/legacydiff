@@ -6,7 +6,7 @@ The synthetic returns example executes a legacy implementation (`<= 30 days`) an
 
 ## Side-by-side browsing
 
-Run `npm run browse` for Main and Working tabs; use `npm run browse:refresh` after merging to main. See [local previews](docs/LOCAL_PREVIEWS.md) for first-time worktree registration, separate data and stop commands.
+Run `npm run browse` for Main and Working tabs; use `npm run browse:refresh` after merging to main. See [local previews](docs/LOCAL_PREVIEWS.md) for first-time worktree registration, shared workspace data and stop commands.
 
 ## Local startup (Windows)
 
@@ -70,26 +70,41 @@ Remove-Item Env:LEGACYDIFF_LEASE_TEST
 
 `npm run test:e2e` requires the frontend, database, and worker already running. It uses independent browser contexts. Install the Playwright Chromium runtime if it is missing: `npx playwright install chromium`.
 
-For Python formatting/lint, the optional pinned Ruff dependency is in `services/runner/requirements-dev.txt`. TypeScript formatting uses `npm run format` / `npm run format:check`. Runtime dependency auditing: `npm audit --omit=dev`.
+For Python formatting/lint, the optional pinned Ruff dependency is in `backend/runner/requirements-dev.txt`. TypeScript formatting uses `npm run format` / `npm run format:check`. Runtime dependency auditing: `npm audit --omit=dev`.
 
 ## Developer map
 
+Start with `frontend/` for screens and `backend/` for all trusted behavior. `packages/` contains the shared integration boundary. Read the [frontend guide](frontend/README.md), [backend guide](backend/README.md), or [shared contract guide](packages/README.md) for a short reading order.
+
+```text
+frontend/    React screens, components and styles
+backend/     Database rules, worker, AI and Python execution
+packages/    Browser client and shared contracts
+fixtures/    Authored synthetic inputs, source pairs and evidence
+tests/       Verification suites (deferred during current iteration)
+scripts/     Local startup and developer commands
+docs/        Requirements, architecture and recorded evidence
+```
+
+VS Code hides dependency folders, build output, caches and `.local` runtime data through repository settings. Those files still exist; nothing is deleted. Generated client bindings remain labeled under `packages/client/generated`.
+
+
 | Location | Responsibility |
 | --- | --- |
-| `apps/web` | Replaceable React presentation, navigation, local drafts |
+| `frontend` | Replaceable React presentation, navigation, local drafts |
 | `packages/client` | Identity, authenticated subscriptions, readiness, typed actions; generated bindings isolated |
 | `packages/contracts` | UI DTOs, strict JSON schemas, reviewed expectation scope, wire conversions |
-| `spacetime/spacetimedb/src` | Authoritative rooms, membership, atomic approvals, receipts, leased jobs |
-| `services/worker` | Private job execution, runner/provider integration, authenticated ZIP export |
-| `services/ai` | Bounded four-role controller, NVIDIA adapter, pinned GitHub evidence retrieval |
-| `services/runner` | Strict Python boundary, reviewed subprocesses, comparison, fixed test template, export |
-| `fixtures/returns` | Three synthetic immutable implementations and conflicting policy documents |
+| `backend/database/spacetimedb/src` | Authoritative rooms, membership, atomic approvals, receipts, leased jobs |
+| `backend/worker` | Private job execution, runner/provider integration, authenticated ZIP export |
+| `backend/ai` | Bounded four-role controller, NVIDIA adapter, pinned GitHub evidence retrieval |
+| `backend/runner` | Strict Python boundary, reviewed subprocesses, comparison, fixed test template, export |
+| `fixtures` | Four reviewed scenario families, 384 authored inputs, source variants and policy evidence |
 | `tests` | Behavioral, real-database, browser, and standalone-export verification |
 | `docs` | Requirements, decisions, evidence, integration limits, deployment/demo guidance |
 
-Start with [the client contract](packages/contracts/view-model.ts), [architecture](docs/ARCHITECTURE.md), and [frontend replacement guide](apps/web/README.md). UI-only contributors may replace `apps/web` without changing backend rules. Shared contracts and client lifecycle need coordinated tests. `AGENTS.md` is the shared instruction source; `CLAUDE.md` points to it.
+Start with [the client contract](packages/contracts/view-model.ts), [architecture](docs/ARCHITECTURE.md), and [frontend replacement guide](frontend/README.md). UI-only contributors may replace `frontend` without changing backend rules. Shared contracts and client lifecycle need coordinated tests. `AGENTS.md` is the shared instruction source; `CLAUDE.md` points to it.
 
-The [verification report](docs/VERIFICATION.md) distinguishes measured behavior, approved policy tests and independent product-security checks. The [fixture backlog](docs/FIXTURE_BACKLOG.md) records six future modernization scenarios as proposals only.
+The [verification report](docs/VERIFICATION.md) distinguishes measured behavior, approved policy tests and independent product-security checks. The [fixture backlog](docs/FIXTURE_BACKLOG.md) distinguishes implemented scenarios from deferred proposals.
 
 ## Live integrations and limits
 
@@ -101,4 +116,6 @@ The repository was empty at clone time. The build branch is now published with e
 
 GitHub Actions checks types, lint, formatting, TypeScript tests, Python tests and the frontend build on pull requests. Real-database, browser and NVIDIA checks require the local services described above and remain separate from hosted CI.
 
-Docker's engine was unavailable during the build. The current runner is explicitly a **trusted-fixture local fallback** with reduced isolation. It accepts only bundled allowlisted, hash-verified synthetic files. It is not an arbitrary-code sandbox or public execution service. See [runner controls](services/runner/README.md) and [verification evidence](docs/VERIFICATION.md).
+Docker's engine was unavailable during the build. The current runner is explicitly a **trusted-fixture local fallback** with reduced isolation. It accepts only bundled allowlisted, hash-verified synthetic files. It is not an arbitrary-code sandbox or public execution service. See [runner controls](backend/runner/README.md) and [verification evidence](docs/VERIFICATION.md).
+
+The current local iteration adds returns, pricing, accounts payable and permissions with 96 authored synthetic inputs each (384 total). Choose **New comparison** in Working to select a scenario. Corpus comparisons, independent requirements, revision-bound policy approval and standalone exports are implemented but await the user-requested validation pass. No synthetic run results are prefilled. See [suite contracts](fixtures/SUITES.md).

@@ -1,0 +1,75 @@
+{
+  "title": "Invoice approval routing",
+  "description": "Net versus gross approval thresholds, distinct eligible approvers, and submitter exclusion.",
+  "decision_owner": "Finance control owner",
+  "policies": [
+    {
+      "id": "gross-threshold",
+      "label": "Route on gross amount",
+      "description": "Subtotal plus tax at or above 1,000,000 cents requires two eligible approvals.",
+      "security_required": false
+    },
+    {
+      "id": "net-threshold",
+      "label": "Route on net amount",
+      "description": "Subtotal at or above 1,000,000 cents requires two eligible approvals; approver controls still apply.",
+      "security_required": false
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ap-controls",
+      "title": "Finance controls manual",
+      "file": "controls_manual.md",
+      "sha256": "e72485c8099211e58eeef65120ffc080d1e631487041cde3a91e9d61a6f9cc3d",
+      "line_start": 3,
+      "line_end": 4
+    },
+    {
+      "id": "ap-migration",
+      "title": "Invoice migration ticket",
+      "file": "migration_ticket.md",
+      "sha256": "a76d79ccaa7b3230c15fd49ed89f6e1f3fcf2db1a68d9cb39055a6969b2854f6",
+      "line_start": 3,
+      "line_end": 4
+    },
+    {
+      "id": "accounts-payable-requirements",
+      "title": "Independent requirements",
+      "file": "requirements.md",
+      "sha256": "d2f2b58727c27cedb878b48b774095883bff6ea9f5061d4b1bea35a47fe98080",
+      "line_start": 3,
+      "line_end": 4
+    }
+  ],
+  "id": "accounts-payable",
+  "baseline": "accounts-payable-legacy-v1",
+  "candidate": "accounts-payable-rewrite-v2",
+  "variants": [
+    {
+      "id": "accounts-payable-legacy-v1",
+      "file": "legacy_v1.py",
+      "sha256": "31c49ebae516e5e9b20bfde2d62176665c73fab43fda3701fe779df832d73302"
+    },
+    {
+      "id": "accounts-payable-rewrite-v2",
+      "file": "rewrite_v2.py",
+      "sha256": "2c3a9e1003e9cd589f77b37d5c42069fd5434e57509deca2f449020c5d09d21d"
+    },
+    {
+      "id": "accounts-payable-corrected-v2",
+      "file": "corrected_v2.py",
+      "sha256": "8b7fcc860cc005a7495c84279f5dd5c2a30877bc5f71e8e68fbc3612eeaec78f"
+    }
+  ],
+  "dataset": {
+    "file": "corpus.json",
+    "version": "1",
+    "sha256": "17fd2b884d71dadce0e2d8d1cc25e010fde79fadc61a5b70537d88ef809d8ba8",
+    "count": 96,
+    "categories": [
+      "approver-controls",
+      "net-gross-boundary"
+    ]
+  }
+}

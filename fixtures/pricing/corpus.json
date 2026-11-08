@@ -1,0 +1,1058 @@
+[
+  {
+    "id": "pricing-001",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 0,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-002",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 0,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-003",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 0,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-004",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 0,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-005",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 0,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-006",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 0,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-007",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 0,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-008",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 0,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-009",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 0,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-010",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 0,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-011",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 0,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-012",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 0,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 0,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-013",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-014",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-015",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-016",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-017",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-018",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-019",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-020",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-021",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-022",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-023",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-024",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-025",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-026",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-027",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-028",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-029",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-030",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-031",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-032",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-033",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-034",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-035",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-036",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 99,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-037",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-038",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-039",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-040",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-041",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-042",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-043",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-044",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-045",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-046",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-047",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-048",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 100,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-049",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-050",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-051",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-052",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-053",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-054",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-055",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-056",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-057",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-058",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-059",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-060",
+    "category": "discount-threshold",
+    "input": {
+      "quantity": 101,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-061",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-062",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-063",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-064",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-065",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-066",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-067",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-068",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-069",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-070",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-071",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-072",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 120,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-073",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-074",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-075",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-076",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-077",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-078",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-079",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-080",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-081",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-082",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-083",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-084",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 999,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-085",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-086",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-087",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-088",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 1,
+      "volume_discount_bps": 1,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-089",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-090",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-091",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-092",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 9000,
+      "volume_discount_bps": 1000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-093",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-094",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": false,
+      "currency": "EUR"
+    }
+  },
+  {
+    "id": "pricing-095",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": "pricing-096",
+    "category": "rounding-currency-and-bounds",
+    "input": {
+      "quantity": 1000,
+      "unit_price_cents": 1000000,
+      "volume_discount_bps": 5000,
+      "price_includes_discount": true,
+      "currency": "EUR"
+    }
+  }
+]

@@ -6,7 +6,7 @@ import { join } from "node:path";
 import test from "node:test";
 import { setTimeout as delay } from "node:timers/promises";
 import { promisify } from "node:util";
-import { runPython } from "../services/worker/runner";
+import { runPython } from "../backend/worker/runner";
 
 const execFileAsync = promisify(execFile);
 
@@ -40,11 +40,11 @@ async function controlledHarness(
 ) {
   const originalDirectory = process.cwd();
   const directory = await mkdtemp(join(tmpdir(), "legacydiff-worker-test-"));
-  await mkdir(join(directory, "services", "runner"), { recursive: true });
+  await mkdir(join(directory, "backend", "runner"), { recursive: true });
   // Test-only replacement at the fixed module location. Production runPython
   // still accepts no program path, command, source text, or spawn adapter.
   await writeFile(
-    join(directory, "services", "runner", "cli.py"),
+    join(directory, "backend", "runner", "cli.py"),
     `
 import json, os, pathlib, subprocess, sys, time
 child = subprocess.Popen([sys.executable, '-I', '-c', 'import time; time.sleep(120)'])

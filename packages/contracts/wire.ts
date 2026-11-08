@@ -1,3 +1,7 @@
+/**
+ * Convert database records into the shapes used by the app.
+ * Keep these conversion details out of screens and job handling.
+ */
 /** Generated SDK accessors use camel case; the runner/UI contract preserves business JSON names. */
 import type * as Wire from "../client/generated/types";
 import type {

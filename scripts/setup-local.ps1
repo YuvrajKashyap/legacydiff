@@ -15,7 +15,7 @@ if (-not (Test-Path -LiteralPath '.local/tools/spacetime/spacetimedb-cli.exe')) 
 }
 npm ci
 if ($LASTEXITCODE -ne 0) { throw 'Root dependency installation failed.' }
-npm ci --prefix spacetime/spacetimedb
+npm ci --prefix backend/database/spacetimedb
 if ($LASTEXITCODE -ne 0) { throw 'Module dependency installation failed.' }
 node scripts/create-local-keys.mjs
 if ($LASTEXITCODE -ne 0) { throw 'Local key initialization failed.' }

@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [main, legacydiff-build]
+    branches: [main, codex/local-development]
   pull_request:
     branches: [main]
 permissions:
@@ -29,3 +29,4 @@ jobs:
       - run: npm test
       - run: npm run test:python
       - run: npx vite build
+
