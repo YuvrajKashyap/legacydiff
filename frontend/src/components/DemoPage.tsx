@@ -64,7 +64,7 @@ const stages = [
     contribution:
       "Keep deny-overrides and tenant isolation. Show me the exact expected results and proposal revision before I approve.",
     explanation:
-      "Publish a policy proposal with rationale and evidence, then preview its exact expected outputs. A reviewer approves that revision or defers the decision. Approval queues validation; it does not certify that the candidate already satisfies the policy.",
+      "Choose the candidate version, then use EDIT to set the intended behavior, evidence and rationale. APPROVE opens a final confirmation of the exact expectations. DEFER leaves the decision open. Approval queues validation and does not guarantee a passing candidate.",
   },
   {
     title: "Validate, export, and keep the record",
@@ -123,7 +123,7 @@ export function DemoPage({
   return (
     <div className="demo-page">
       <button className="back-link" onClick={onBack}>
-        ← Comparisons
+        Comparisons
       </button>
       <header className="demo-heading">
         <span className="eyebrow">Demo · guided product walkthrough</span>
