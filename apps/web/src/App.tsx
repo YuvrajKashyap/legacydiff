@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLegacyDiff } from "../../../packages/client/react";
+import { frontendOnly, useLegacyDiff } from "../../../packages/client/react";
 import type { LegacyDiffState } from "./view-model";
 import type { HomeView } from "./presentation";
 import { Home } from "./components/Home";
@@ -107,11 +107,15 @@ export default function App() {
             {state.identity ? state.identity.slice(0, 2).toUpperCase() : "…"}
           </span>
           <div>
-            <strong>Local workspace</strong>
+            <strong>
+              {frontendOnly ? "Hosted frontend" : "Local workspace"}
+            </strong>
             <small title={state.identity}>
               {state.identity
                 ? `Identity ${state.identity.slice(0, 8)}`
-                : "Restoring identity"}
+                : frontendOnly
+                  ? "Backend not connected"
+                  : "Restoring identity"}
             </small>
           </div>
         </div>
@@ -123,7 +127,11 @@ export default function App() {
           </span>
           <div className="readiness">
             <Badge tone={state.ready ? "teal" : "amber"}>
-              {state.ready ? "Spacetime connected" : "Connecting / stale"}
+              {frontendOnly
+                ? "Frontend preview"
+                : state.ready
+                  ? "Spacetime connected"
+                  : "Connecting / stale"}
             </Badge>
             <Badge
               tone={
@@ -140,8 +148,9 @@ export default function App() {
         </header>
         {!state.ready && (
           <div className="connection-notice" role="status">
-            Waiting for a current authorized snapshot. Publishing and approvals
-            are disabled.
+            {frontendOnly
+              ? "You are viewing the deployed frontend from main. Live comparisons, collaboration and exports are unavailable until the hosted database and private worker are connected."
+              : "Waiting for a current authorized snapshot. Publishing and approvals are disabled."}
           </div>
         )}
         <div id="main-content" className="main-content">

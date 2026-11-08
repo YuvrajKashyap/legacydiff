@@ -1,6 +1,6 @@
 # Deployment boundaries
 
-The verified target is a loopback-only Windows demonstration. No public deployment has occurred or is authorized by the build request.
+The full verified application runs as a loopback-only Windows demonstration. On November 8, 2026, the user authorized a Vercel frontend deployment linked to main. This does not deploy the private runner or enable the hosted database.
 
 ## Three independent services
 
@@ -28,3 +28,7 @@ Obtain explicit authorization for the exact hosting/publication action. Then ver
 The user separately authorized NVIDIA and Spacetime account setup. A dedicated NVIDIA worker key is stored in ignored `.env`; it expires December 8, 2026. The private hosted database [legacydiff-dev-v5iw5](https://spacetimedb.com/@yuvrajkashyap/legacydiff-dev-v5iw5) has the real module and owner configuration installed. It is paused pending a deliberately hosted worker and access/reachability checks. The application remains on the local backend. No public frontend/worker, paid service purchase or sponsor submission occurred. Sponsor eligibility and entry status remain separate evidence checks.
 
 Hosted CLI auth uses `--config-path .local/hosted-cli.toml` so login cannot replace the local publisher identity. Future updates must preserve data and pass `--delete-data=never`; do not copy initial empty-database setup commands into routine deployment scripts. Do not point the current local fallback worker at a remotely reachable job queue.
+
+## Vercel frontend
+
+The repository-root vercel.json builds only the React/Vite frontend into dist; the database module is built separately. Git integration follows main. No worker secrets are required or uploaded. Without an explicitly configured VITE_SPACETIME_URI, non-loopback pages show a frontend-preview notice and do not open a database connection. Comparisons, approval and export remain disabled. Do not configure a hosted backend until the release gate above is met.
