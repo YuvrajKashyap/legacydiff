@@ -2,7 +2,9 @@ import { expect, test, type Page } from "@playwright/test";
 
 test.use({ actionTimeout: 10_000 });
 
-const baseUrl = "http://127.0.0.1:5174";
+const baseUrl = process.env.E2E_BASE_URL ?? "http://127.0.0.1:5174";
+const databasePort = process.env.LEGACYDIFF_DB_PORT ?? "3000";
+const workerPort = process.env.LEGACYDIFF_WORKER_PORT ?? "3001";
 
 async function ready(page: Page) {
   await expect(
@@ -235,10 +237,9 @@ test("two independent identities review a measured mismatch, reject a stale prev
     expect(await download.failure()).toBeNull();
     expect(download.suggestedFilename()).toContain("decision-1.zip");
     // A direct export request must enforce membership even without browser CORS.
-    const outsiderToken = await outsider.evaluate(() =>
-      localStorage.getItem(
-        "legacydiff.identity.v1:ws://127.0.0.1:3000:legacydiff-local-v2",
-      ),
+    const outsiderToken = await outsider.evaluate(
+      (key) => localStorage.getItem(key),
+      `legacydiff.identity.v1:ws://127.0.0.1:${databasePort}:legacydiff-local-v2`,
     );
     expect(outsiderToken).toBeTruthy();
     const address = new URL(roomUrl);
@@ -248,7 +249,7 @@ test("two independent identities review a measured mismatch, reject a stale prev
     ];
     for (const headers of deniedHeaders) {
       const denied = await outsider.request.post(
-        "http://127.0.0.1:3001/export",
+        `http://127.0.0.1:${workerPort}/export`,
         {
           headers,
           data: {

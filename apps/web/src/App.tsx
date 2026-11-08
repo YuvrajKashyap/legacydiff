@@ -121,7 +121,7 @@ export default function App() {
       <div className="app-main">
         <header className="topbar">
           <span className="topbar-label">
-            {import.meta.env.VITE_INSTANCE_LABEL || "Working"} �{" "}
+            {import.meta.env.VITE_INSTANCE_LABEL || "Working"} |{" "}
             {import.meta.env.VITE_INSTANCE_REVISION || "live changes"}
           </span>
           <div className="readiness">

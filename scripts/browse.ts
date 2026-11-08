@@ -125,6 +125,13 @@ async function stack(cwd: string, label: "Main" | "Working") {
   if (!existsSync(node)) {
     run(process.execPath, [process.env.npm_execpath!, "ci"], cwd);
   }
+  if (!existsSync(join(cwd, "spacetime/spacetimedb/node_modules/typescript"))) {
+    run(
+      process.execPath,
+      [process.env.npm_execpath!, "ci", "--prefix", "spacetime/spacetimedb"],
+      cwd,
+    );
+  }
   const tools = join(root, ".local/tools/spacetime");
   const cli = join(tools, "spacetimedb-cli.exe");
   const standalone = join(tools, "spacetimedb-standalone.exe");
@@ -266,6 +273,11 @@ if (mode === "stop") {
     git(["fetch", "origin", "main"]);
     git(["checkout", "--detach", "origin/main"], mainPath);
     run(process.execPath, [process.env.npm_execpath!, "ci"], mainPath);
+    run(
+      process.execPath,
+      [process.env.npm_execpath!, "ci", "--prefix", "spacetime/spacetimedb"],
+      mainPath,
+    );
   }
   await stack(mainPath, "Main");
   await stack(root, "Working");
