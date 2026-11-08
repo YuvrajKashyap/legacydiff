@@ -1,4 +1,5 @@
 /** Show all comparisons, those waiting for a decision, and earlier decisions. */
+import { useRef, type CSSProperties } from "react";
 import type { Room } from "../view-model";
 import type { ScenarioRun } from "../../../packages/contracts/scenarios";
 import {
@@ -6,7 +7,15 @@ import {
   type ComparisonSummary,
 } from "../comparison-summaries";
 import { displayTime, type HomeView } from "../presentation";
-import { Badge } from "./Primitives";
+import { Badge, Icon } from "./Primitives";
+import {
+  Cascade,
+  Reveal,
+  Section,
+  Ticker,
+  TiltCard,
+} from "../motion/components";
+import { useInView, useReducedMotion, useSignal } from "../motion";
 
 const viewCopy = {
   comparisons: {
@@ -14,7 +23,7 @@ const viewCopy = {
     description:
       "Every saved run, from the first measured difference to the final decision.",
     scope:
-      "Needs review shows the comparisons awaiting a decision. History shows approved decisions. Both remain here too.",
+      "Review queue shows the comparisons awaiting a decision. History shows approved decisions. Both remain here too.",
     emptyTitle: "No comparisons yet",
     emptyDescription:
       "Choose a bundled migration example, execute both versions, and review what changed.",
@@ -26,12 +35,12 @@ const viewCopy = {
     ],
   },
   queue: {
-    title: "Needs review",
+    title: "Review queue",
     description:
       "Review observed behavior and sign off on the intended policy, including matching results.",
     scope:
       "This is your active review list. Deferred comparisons stay in All comparisons and leave this queue; deferring creates no approved decision.",
-    emptyTitle: "No decisions waiting for review",
+    emptyTitle: "No unresolved comparisons",
     emptyDescription:
       "Measured comparisons awaiting human sign-off appear here, even when outputs match. Deferred comparisons and runs still executing remain in All comparisons.",
     columns: [
@@ -80,75 +89,240 @@ export function Home({
   onOpen: (roomId: string, runId: string) => void;
 }) {
   const items = comparisonSummaries(rooms, scenarioRuns, view);
+  const all = comparisonSummaries(rooms, scenarioRuns, "comparisons");
   const copy = viewCopy[view];
+  const totals = {
+    runs: all.length,
+    differences: all.reduce((sum, item) => sum + item.differences, 0),
+    cases: all.reduce((sum, item) => sum + item.totalCases, 0),
+    decided: all.filter((item) => item.reviewState === "decided").length,
+  };
 
   return (
     <div className="home-page">
-      <header className="page-heading">
-        <div>
-          <span className="eyebrow">Migration review workspace</span>
-          <h1>
-            {copy.title} <Badge>{items.length}</Badge>
-          </h1>
-          <p>{copy.description}</p>
+      <Section className="home-hero" as="header">
+        <div className="home-hero-copy">
+          <Reveal effect="rise">
+            <span className="eyebrow">Migration review workspace</span>
+          </Reveal>
+          <Reveal effect="cascade" as="h1" className="home-title">
+            <Cascade text={copy.title} />
+          </Reveal>
+          <Reveal effect="rise" delay={180}>
+            <p className="home-lede">
+              {view === "comparisons" ? (
+                <>
+                  Execute both versions on the same inputs. Find the exact day
+                  the promise changed.{" "}
+                  <em className="serif">Decide it together,</em> then keep the
+                  test.
+                </>
+              ) : (
+                copy.description
+              )}
+            </p>
+          </Reveal>
+          <Reveal effect="rise" delay={300} className="home-actions">
+            <button
+              className="button-primary home-cta"
+              disabled={!ready}
+              onClick={onNew}
+            >
+              <Icon name="plus" size={16} /> New comparison
+            </button>
+            <span className="home-scope">{copy.scope}</span>
+          </Reveal>
+          <Reveal
+            effect="rise"
+            delay={420}
+            as="ul"
+            className="readout-list home-readouts"
+          >
+            <li>
+              <Ticker value={totals.runs} /> runs
+            </li>
+            <li>
+              <Ticker value={totals.cases} /> executed inputs
+            </li>
+            <li>
+              <Ticker value={totals.differences} /> differing cases
+            </li>
+            <li>
+              <Ticker value={totals.decided} /> approved decisions
+            </li>
+          </Reveal>
         </div>
-        <button className="button-primary" disabled={!ready} onClick={onNew}>
-          <span aria-hidden="true">+</span> New comparison
-        </button>
-      </header>
-      <p className="muted small">{copy.scope}</p>
-      {view === "queue" && items.length > 0 && (
-        <p className="small">
-          <strong>{items.length}</strong> comparisons need attention
-        </p>
-      )}
+        <Reveal effect="focus-pull" delay={120} className="home-hero-stage">
+          <DiffStage summaries={all} ready={ready} />
+        </Reveal>
+      </Section>
+
       {items.length ? (
-        <section className="comparison-list" aria-label={copy.title}>
+        <Section className="comparison-list panel" aria-label={copy.title}>
           <div className="comparison-list-heading">
             {copy.columns.map((column) => (
               <span key={column}>{column}</span>
             ))}
           </div>
-          {items.map((run) => (
-            <ComparisonRow
-              key={`${run.roomId}:${run.runId}`}
-              run={run}
-              view={view}
-              onOpen={onOpen}
-            />
-          ))}
-        </section>
-      ) : (
-        <section className="empty-state">
-          <div className="empty-diff" aria-hidden="true">
-            <span>−</span>
-            <span>+</span>
+          <div className="stagger">
+            {items.map((run, index) => (
+              <Reveal
+                effect="unseal"
+                key={`${run.roomId}:${run.runId}`}
+                style={{ "--i": index } as CSSProperties}
+              >
+                <ComparisonRow run={run} view={view} onOpen={onOpen} />
+              </Reveal>
+            ))}
           </div>
-          <h2>{ready ? copy.emptyTitle : "Connecting to your workspace"}</h2>
-          <p>
-            {ready
-              ? copy.emptyDescription
-              : "Restoring your identity and waiting for the authorized snapshot."}
-          </p>
-          {view === "comparisons" && (
-            <button
-              className="button-primary"
-              disabled={!ready}
-              onClick={onNew}
-            >
-              Choose a comparison example <span aria-hidden="true">→</span>
-            </button>
-          )}
-        </section>
+        </Section>
+      ) : (
+        <Section className="empty-state panel home-empty">
+          <Reveal effect="deal-in">
+            <div className="empty-diff" aria-hidden="true">
+              <span>−</span>
+              <span>+</span>
+            </div>
+            <h2>{ready ? copy.emptyTitle : "Connecting to your workspace"}</h2>
+            <p>
+              {ready
+                ? copy.emptyDescription
+                : "Restoring your identity and waiting for the authorized snapshot."}
+            </p>
+            {view === "comparisons" && (
+              <button
+                className="button-primary"
+                disabled={!ready}
+                onClick={onNew}
+              >
+                Choose a comparison example <Icon name="arrow" size={16} />
+              </button>
+            )}
+          </Reveal>
+        </Section>
       )}
-      <div className="workflow-note">
-        <span>Execute</span>
-        <i aria-hidden="true">→</i>
-        <span>Investigate</span>
-        <i aria-hidden="true">→</i>
-        <span>Decide together</span>
-        <i aria-hidden="true">→</i>
-        <span>Keep an executable test</span>
+
+      <Section className="home-flow" aria-label="How a review moves">
+        <div className="stagger home-flow-steps">
+          {[
+            [
+              "01",
+              "Execute",
+              "Both versions run on the same validated inputs. Outputs are measured, never assumed.",
+            ],
+            [
+              "02",
+              "Investigate",
+              "An orchestrator and three specialists read code and evidence within a fixed budget.",
+            ],
+            [
+              "03",
+              "Decide together",
+              "Two people review the conflict, publish revisions, and approve one exact revision.",
+            ],
+            [
+              "04",
+              "Keep the test",
+              "Approval compiles the expectation into a runnable test and a reproducible export.",
+            ],
+          ].map(([mark, title, text], index) => (
+            <Reveal
+              effect="deal-in"
+              key={mark}
+              style={{ "--i": index } as CSSProperties}
+              className="home-step"
+            >
+              <TiltCard className="home-step-card" strength={4}>
+                <span className="readout">{mark}</span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </TiltCard>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+    </div>
+  );
+}
+
+/**
+ * The home centerpiece: two source panes, a sweeping measurement beam, and a flare where
+ * they disagree. Counts shown are real; the scene itself is an illustration of the method.
+ */
+function DiffStage({
+  summaries,
+  ready,
+}: {
+  summaries: ComparisonSummary[];
+  ready: boolean;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.3 });
+  const reduced = useReducedMotion();
+  const live = summaries.filter((item) => item.measured).at(0);
+  useSignal((signal) => {
+    const element = ref.current;
+    if (!element || !["started", "published", "approved"].includes(signal))
+      return;
+    element.classList.remove("is-flaring");
+    void element.offsetWidth;
+    element.classList.add("is-flaring");
+  });
+  return (
+    <div
+      ref={ref}
+      className={`diff-stage ${inView && !reduced ? "is-animating" : ""}`}
+      onPointerMove={(event) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        event.currentTarget.style.setProperty(
+          "--px",
+          `${((event.clientX - rect.left) / rect.width - 0.5).toFixed(3)}`,
+        );
+        event.currentTarget.style.setProperty(
+          "--py",
+          `${((event.clientY - rect.top) / rect.height - 0.5).toFixed(3)}`,
+        );
+      }}
+      aria-hidden="true"
+    >
+      <div className="diff-stage-pane diff-stage-pane--baseline">
+        <span className="diff-stage-label baseline-text">
+          Baseline · legacy
+        </span>
+        <pre>{`if age_days <= 30:\n    return eligible(price)`}</pre>
+        <span className="diff-stage-hash">v1 · pinned sha256</span>
+      </div>
+      <div className="diff-stage-axis">
+        {[28, 29, 30, 31, 32].map((day) => (
+          <span
+            key={day}
+            className={`diff-stage-tick ${day === 30 ? "is-boundary" : ""}`}
+          >
+            <i />
+            <small>{day}</small>
+          </span>
+        ))}
+        <span className="diff-stage-flare" />
+      </div>
+      <div className="diff-stage-pane diff-stage-pane--candidate">
+        <span className="diff-stage-label candidate-text">
+          Candidate · rewrite
+        </span>
+        <pre>{`if age_days < 30:\n    return eligible(price)`}</pre>
+        <span className="diff-stage-hash">v2 · pinned sha256</span>
+      </div>
+      <span className="diff-stage-beam" />
+      <div className="diff-stage-footer">
+        <span className="readout">
+          {ready
+            ? live
+              ? `latest measured · ${live.differences}/${live.totalCases} differ`
+              : "no measured runs yet"
+            : "connecting"}
+        </span>
+        <span className="diff-stage-note">
+          Illustration of the method. Day 30 is the returns example boundary.
+        </span>
       </div>
     </div>
   );
@@ -190,9 +364,12 @@ function ComparisonRow({
     run.executionProblems > 0 ||
     (run.unmetRequirements ?? 0) > 0
       ? "red"
-      : run.differences > 0
-        ? "amber"
-        : "neutral";
+      : status === "pass"
+        ? "green"
+        : run.differences > 0
+          ? "amber"
+          : "neutral";
+  const ratio = run.totalCases ? run.differences / run.totalCases : 0;
   return (
     <button
       className="comparison-row"
@@ -204,14 +381,21 @@ function ComparisonRow({
         {view === "queue" && (
           <small>{reviewLabel} · human policy sign-off required</small>
         )}
-        <small>
+        <small className="comparison-pair">
           <span className="baseline-text">{run.baseline}</span>
-          <span aria-hidden="true"> → </span>
+          <span className="comparison-pair-arrow" aria-hidden="true">
+            <i />
+          </span>
           <span className="candidate-text">{run.candidate}</span>
         </small>
       </span>
-      <span>
+      <span className="comparison-observed">
         <Badge tone={tone}>{status}</Badge>
+        {view !== "history" && run.measured && (
+          <span className="comparison-meter" aria-hidden="true">
+            <i style={{ "--ratio": ratio } as CSSProperties} />
+          </span>
+        )}
         {view !== "history" && <small>{issues}</small>}
       </span>
       <span>
@@ -238,12 +422,12 @@ function ComparisonRow({
           </>
         )}
       </span>
-      <span className="muted">
+      <span className="muted comparison-time">
         {displayTime(
           view === "history" && decision ? decision.createdAt : run.updatedAt,
         )}
         <span className="row-arrow" aria-hidden="true">
-          ↗
+          <Icon name="arrow" size={16} />
         </span>
       </span>
     </button>

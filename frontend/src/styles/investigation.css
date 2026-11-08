@@ -23,7 +23,7 @@
   padding: 14px;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: #fafbfd;
+  background: var(--surface-2);
 }
 .investigation-role header {
   display: flex;

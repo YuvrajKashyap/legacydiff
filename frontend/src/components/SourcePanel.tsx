@@ -11,7 +11,7 @@ export function SourcePanel({
 }) {
   return (
     <section className={`source-panel source-panel--${side}`}>
-      <span className="eyebrow">
+      <span className={`eyebrow ${side}-text`}>
         {side === "baseline"
           ? "Baseline · old behavior"
           : "Candidate · proposed replacement"}
@@ -22,7 +22,7 @@ export function SourcePanel({
           <dl className="source-meta">
             <div>
               <dt>File</dt>
-              <dd>{variant.file}</dd>
+              <dd className="mono">{variant.file}</dd>
             </div>
             <div>
               <dt>Entry point</dt>
@@ -32,7 +32,7 @@ export function SourcePanel({
             </div>
             <div>
               <dt>Revision</dt>
-              <dd>{variant.revision}</dd>
+              <dd className="mono">{variant.revision}</dd>
             </div>
           </dl>
           <details>

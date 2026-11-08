@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import type { ScenarioRun } from "../../../packages/contracts/scenarios";
 import type { LegacyDiffState } from "../view-model";
+import { OrchestrationGraph } from "./OrchestrationGraph";
 import "../styles/demo.css";
 
 const stages = [
@@ -63,7 +64,7 @@ const stages = [
     contribution:
       "Keep deny-overrides and tenant isolation. Show me the exact expected results and proposal revision before I approve.",
     explanation:
-      "Publish a policy proposal with rationale and evidence, then preview its exact expected outputs. A reviewer approves that revision or defers the decision. Approval queues validation; it does not certify that the candidate already satisfies the policy.",
+      "Choose the candidate version, then use EDIT to set the intended behavior, evidence and rationale. APPROVE opens a final confirmation of the exact expectations. DEFER leaves the decision open. Approval queues validation and does not guarantee a passing candidate.",
   },
   {
     title: "Validate, export, and keep the record",
@@ -122,7 +123,7 @@ export function DemoPage({
   return (
     <div className="demo-page">
       <button className="back-link" onClick={onBack}>
-        ← Comparisons
+        Comparisons
       </button>
       <header className="demo-heading">
         <span className="eyebrow">Demo · guided product walkthrough</span>
@@ -460,24 +461,10 @@ function StagePreview({ step, run }: { step: number; run?: ScenarioRun }) {
         <header>
           Investigation team <span>Illustrative public findings</span>
         </header>
-        <div className="demo-agent-root">
-          <strong>Nemotron orchestrator</strong>
-          <small>
-            Plan the review, combine evidence, identify unresolved questions
-          </small>
-        </div>
-        <div className="demo-agent-grid">
-          {[
-            ["Behavior", "Trace the grant path and compare outputs."],
-            ["Policy", "Check default-deny and tenant separation."],
-            ["Regression", "Cover cross-tenant reads and denied fields."],
-          ].map(([role, text]) => (
-            <div key={role}>
-              <strong>{role} specialist</strong>
-              <p>{text}</p>
-            </div>
-          ))}
-        </div>
+        <OrchestrationGraph
+          mode="illustrative"
+          caption="Walkthrough illustration. Recorded activity lives in The Lab."
+        />
         <p>
           Example synthesis: “A shared access defect needs an independent
           requirement, not a vote for the legacy output.” This is a walkthrough

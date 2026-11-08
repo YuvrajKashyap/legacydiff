@@ -77,7 +77,7 @@
 .demo-page .demo-contribution {
   border-left: 3px solid var(--teal);
   padding: 8px 16px;
-  background: #f4f8f8;
+  background: var(--surface-2);
 }
 .demo-page .demo-contribution > span {
   color: var(--muted);
@@ -120,7 +120,7 @@
   border-radius: 8px;
   padding: 16px;
   margin-top: 20px;
-  background: #fafbfd;
+  background: var(--surface-2);
 }
 .demo-page .demo-preview > header {
   display: flex;
@@ -146,7 +146,7 @@
 }
 .demo-page .demo-pair > div {
   padding: 12px;
-  background: white;
+  background: var(--surface);
   border: 1px solid var(--line);
   flex: 1;
 }
@@ -189,7 +189,7 @@
   text-align: center;
   padding: 14px;
   border: 1px solid var(--teal);
-  background: #f0f8f7;
+  background: var(--surface-2);
 }
 .demo-page .demo-agent-grid {
   display: grid;
@@ -199,14 +199,14 @@
 }
 .demo-page .demo-agent-grid > div {
   border: 1px solid var(--line);
-  background: white;
+  background: var(--surface);
   padding: 10px;
   font-size: 12px;
 }
 .demo-page .demo-chat-bubble {
   padding: 12px;
   margin: 10px 0;
-  background: white;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 7px;
   font-size: 13px;
@@ -226,7 +226,7 @@
   margin: 6px 0;
 }
 .demo-page .demo-notice {
-  background: #fff6e8;
+  background: var(--diff);
   border-left: 3px solid var(--amber);
   padding: 10px;
   font-size: 12px;
@@ -245,11 +245,11 @@
 /* The Demo is a small playable scene; it never animates actual shared activity. */
 .demo-page .demo-cinema {
   margin-top: 24px;
-  border: 1px solid #cedae4;
+  border: 1px solid var(--line-strong);
   border-radius: 12px;
-  background: #f6f9fb;
+  background: var(--surface-2);
   overflow: hidden;
-  box-shadow: 0 12px 28px #18253d08;
+  box-shadow: 0 12px 28px var(--ink) 08;
 }
 .demo-page .demo-cinema-title {
   display: flex;
@@ -257,7 +257,7 @@
   gap: 12px;
   align-items: center;
   padding: 15px 18px;
-  background: #fff;
+  background: var(--surface);
   border-bottom: 1px solid var(--line);
   font-size: 11px;
   color: var(--muted);
@@ -299,8 +299,8 @@
 }
 .demo-page .demo-person.is-active {
   opacity: 1;
-  background: #fff;
-  border-color: #b7cbd2;
+  background: var(--surface);
+  border-color: var(--line-strong);
 }
 .demo-page .demo-person-avatar,
 .demo-page .demo-message-avatar {
@@ -312,18 +312,18 @@
   border-radius: 50%;
   font-size: 11px;
   font-weight: 700;
-  background: #dcefeb;
-  color: #176956;
+  background: var(--surface-2);
+  color: var(--baseline);
 }
 .demo-page .demo-person--plum .demo-person-avatar,
 .demo-page .demo-message-avatar.demo-person--plum {
-  color: #704a91;
-  background: #ece4f5;
+  color: var(--baseline);
+  background: var(--surface-2);
 }
 .demo-page .demo-person--ochre .demo-person-avatar,
 .demo-page .demo-message-avatar.demo-person--ochre {
-  color: #8a621d;
-  background: #f6ebd2;
+  color: var(--diff);
+  background: var(--surface-2);
 }
 .demo-page .demo-person strong {
   display: block;
@@ -361,7 +361,7 @@
   opacity: 1;
 }
 .demo-page .demo-scene-message > div {
-  background: #fff;
+  background: var(--surface);
   padding: 12px 15px;
   border: 1px solid var(--line);
   border-radius: 0 10px 10px;
@@ -369,7 +369,7 @@
   min-width: 0;
 }
 .demo-page .demo-scene-message.is-current > div {
-  border-color: #bed5d2;
+  border-color: var(--line-strong);
 }
 .demo-page .demo-scene-message header {
   display: flex;
@@ -392,15 +392,15 @@
   align-items: center;
   gap: 10px;
   padding: 12px 15px;
-  background: #f1ecf7;
-  border: 1px solid #e3d8ef;
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
   border-radius: 8px;
-  color: #694885;
+  color: var(--baseline);
   font-size: 12px;
 }
 .demo-page .demo-review-handoff small {
   flex-basis: 100%;
-  color: #796989;
+  color: var(--muted);
 }
 .demo-page .demo-film-progress {
   display: flex;
@@ -409,7 +409,7 @@
 }
 .demo-page .demo-film-progress > span {
   height: 3px;
-  background: #dce3e9;
+  background: var(--line-strong);
   flex: 1;
   border-radius: 4px;
   overflow: hidden;

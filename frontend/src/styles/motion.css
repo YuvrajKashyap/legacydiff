@@ -1,0 +1,358 @@
+/*
+  Motion vocabulary. Each named reveal has a physical idea behind it:
+  deal-in tips a card up off the table, unseal wipes a document open,
+  focus-pull sharpens a single hero element, cascade lifts letters one by one.
+  Only transform, opacity and clip-path animate here, so scrolling stays smooth.
+*/
+
+/* Reveals start hidden and settle into place when their section is on screen. */
+.reveal {
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-reveal="rise"] {
+  transition:
+    opacity 760ms var(--ease),
+    transform 900ms var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-reveal="rise"][data-in="false"] {
+  opacity: 0;
+  transform: translateY(26px);
+}
+.reveal[data-reveal="deal-in"] {
+  transform-origin: 50% 100%;
+  transition:
+    opacity 520ms var(--ease),
+    transform 900ms var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-reveal="deal-in"][data-in="false"] {
+  opacity: 0;
+  transform: perspective(1100px) translateY(70px) rotateX(-32deg) scale(0.94);
+}
+.reveal[data-reveal="unseal"] {
+  transition:
+    clip-path 1100ms var(--ease),
+    transform 1100ms var(--ease),
+    opacity 400ms var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+  clip-path: inset(0 0 0 0 round var(--radius));
+}
+.reveal[data-reveal="unseal"][data-in="false"] {
+  clip-path: inset(0 100% 0 0 round var(--radius));
+  transform: translateX(-14px);
+  opacity: 0.4;
+}
+.reveal[data-reveal="focus-pull"] {
+  transition:
+    opacity 700ms var(--ease),
+    transform 1000ms var(--ease),
+    filter 900ms var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-reveal="focus-pull"][data-in="false"] {
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  filter: blur(10px);
+}
+.reveal[data-reveal="curtain"] {
+  transition:
+    clip-path 1000ms var(--ease),
+    opacity 400ms var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+  clip-path: inset(0 0 0 0);
+}
+.reveal[data-reveal="curtain"][data-in="false"] {
+  clip-path: inset(0 50% 0 50%);
+  opacity: 0.3;
+}
+.reveal[data-reveal="blinds"] {
+  transition:
+    clip-path 900ms var(--ease),
+    transform 900ms var(--ease),
+    opacity 500ms var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.reveal[data-reveal="blinds"][data-in="false"] {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  transform: translateY(-10px);
+  opacity: 0;
+}
+.reveal[data-reveal="cascade"] .cascade-letter {
+  transition:
+    opacity 600ms var(--ease),
+    transform 820ms var(--ease);
+  transition-delay: calc(var(--reveal-delay, 0ms) + var(--i, 0) * 32ms);
+}
+.reveal[data-reveal="cascade"][data-in="false"] .cascade-letter {
+  opacity: 0;
+  transform: translateY(0.7em) rotateX(-70deg);
+}
+.cascade {
+  display: inline;
+}
+.cascade-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+/* A trailing text space collapses inside each animated word, so keep the gap in CSS. */
+.cascade-word:not(:last-child) {
+  margin-inline-end: 0.25em;
+}
+.cascade-letter {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  backface-visibility: hidden;
+}
+
+/* Stagger helper: children inside a staggered parent arrive one after another. */
+.stagger > .reveal {
+  --reveal-delay: calc(var(--i, 0) * 95ms);
+}
+
+/* Tilt cards: the glare follows the cursor across the surface. */
+.tilt {
+  transform: perspective(1000px) rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg));
+  transition: transform 420ms var(--ease);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.tilt:hover {
+  transition: transform 120ms var(--ease-signal);
+}
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    360px circle at var(--gx, 50%) var(--gy, 50%),
+    rgb(255 255 255 / 0.1),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 320ms var(--ease);
+  z-index: 1;
+}
+.tilt:hover .tilt-glare {
+  opacity: 1;
+}
+:root[data-theme="light"] .tilt-glare {
+  background: radial-gradient(
+    360px circle at var(--gx, 50%) var(--gy, 50%),
+    rgb(255 255 255 / 0.85),
+    transparent 60%
+  );
+}
+
+/* Magnetic buttons drift toward the pointer; the label lags a little for weight. */
+.is-magnetic .magnetic-label {
+  display: inline-block;
+  transform: translate3d(
+    calc(var(--mx, 0px) * 0.35),
+    calc(var(--my, 0px) * 0.35),
+    0
+  );
+  transition: transform 160ms var(--ease);
+}
+
+/* Click ripple: born exactly where the pointer pressed. */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgb(255 255 255 / 0.35), transparent 60%);
+  transform: scale(0);
+  animation: ripple 720ms var(--ease) forwards;
+  z-index: 0;
+}
+:root[data-theme="light"] .ripple {
+  background: radial-gradient(circle, rgb(20 29 43 / 0.16), transparent 60%);
+}
+@keyframes ripple {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Custom cursor on mouse devices. */
+.has-cursor,
+.has-cursor * {
+  cursor: none !important;
+}
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 240ms var(--ease);
+  will-change: transform;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+.cursor-ring {
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-glow);
+}
+.cursor-ring::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  transform: scale(1);
+  transition:
+    transform 320ms var(--ease-overshoot),
+    background 220ms var(--ease-signal),
+    border-radius 260ms var(--ease);
+}
+.cursor-ring.is-over::after {
+  transform: scale(1.55);
+  background: var(--accent-soft);
+}
+.cursor-ring.is-typing::after {
+  transform: scaleX(0.12) scaleY(0.9);
+  border-radius: 2px;
+  background: var(--accent);
+}
+.cursor-dot.is-visible,
+.cursor-ring.is-visible {
+  opacity: 1;
+}
+
+/* Ambient breathing for small live markers, delayed so entrances finish first. */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 1;
+  }
+}
+@keyframes pulse-ring {
+  from {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+@keyframes scan {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+/* Live status dot: a solid core with an expanding ring when something is active. */
+.live-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  flex-shrink: 0;
+}
+.live-dot--on {
+  background: var(--pass);
+  box-shadow: 0 0 10px var(--pass);
+}
+.live-dot--on::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid var(--pass);
+  animation: pulse-ring 2.2s var(--ease-orbital) infinite;
+}
+.live-dot--warn {
+  background: var(--diff);
+  box-shadow: 0 0 10px var(--diff);
+}
+.live-dot--warn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid var(--diff);
+  animation: pulse-ring 1.3s var(--ease-orbital) infinite;
+}
+.live-dot--busy {
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+.live-dot--busy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid var(--accent);
+  animation: pulse-ring 1.4s var(--ease-orbital) infinite;
+}
+
+/* View transition for the theme wipe: the old view stays put while the new one circles out. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal[data-in="false"],
+  .reveal[data-in="false"] .cascade-letter {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    filter: none !important;
+  }
+  .tilt {
+    transform: none !important;
+  }
+}

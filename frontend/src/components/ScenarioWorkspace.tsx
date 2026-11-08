@@ -12,6 +12,8 @@ import type { ScenarioRun } from "../../../packages/contracts/scenarios";
 import type { LegacyDiffState } from "../view-model";
 import { displayTime } from "../presentation";
 import { Badge, Dialog, ErrorNotice } from "./Primitives";
+import { emitSignal } from "../motion";
+import { Reveal } from "../motion/components";
 
 type Preview = {
   revision: number;
@@ -127,6 +129,7 @@ function VersionWorkspace({
       success?.();
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : String(cause));
+      emitSignal("error");
     } finally {
       setBusy(false);
     }
@@ -150,19 +153,26 @@ function VersionWorkspace({
       () => {
         setPreview(null);
         setEditorOpen(false);
+        emitSignal("approved");
       },
     );
   }
   return (
     <div className="scenario-workspace">
-      <button className="text-button" onClick={onBack}>
-        ← All comparisons
+      <button className="back-link" onClick={onBack}>
+        All comparisons
       </button>
       <header className="page-heading">
         <div>
-          <span className="eyebrow">{run.manifest.title}</span>
-          <h1>{room?.name || run.manifest.title}</h1>
-          <p>{run.manifest.description}</p>
+          <Reveal effect="rise">
+            <span className="eyebrow">{run.manifest.title}</span>
+          </Reveal>
+          <Reveal effect="unseal" as="h1">
+            {room?.name || run.manifest.title}
+          </Reveal>
+          <Reveal effect="rise" delay={120} as="p">
+            {run.manifest.description}
+          </Reveal>
         </div>
         {run.state !== "completed" && (
           <Badge tone={run.state === "error" ? "red" : "neutral"}>

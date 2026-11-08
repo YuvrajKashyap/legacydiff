@@ -7,6 +7,7 @@ import type {
   SuiteComparison,
 } from "../../../packages/contracts/scenarios";
 import { Badge } from "./Primitives";
+import { Ticker } from "../motion/components";
 const json = (value: unknown) => JSON.stringify(value, null, 2);
 /** Explain the three independent questions before showing detailed evidence. */
 export function OutcomeGuide({ run }: { run: ScenarioRun }) {
@@ -33,7 +34,9 @@ export function OutcomeGuide({ run }: { run: ScenarioRun }) {
       </div>
       <div className="outcome-cards">
         <a href="#measured-behavior">
-          <span className="outcome-number">{result.error_count}</span>
+          <span className="outcome-number">
+            <Ticker value={result.error_count} />
+          </span>
           <strong>Execution problems</strong>
           <p>
             {result.error_count
@@ -43,7 +46,7 @@ export function OutcomeGuide({ run }: { run: ScenarioRun }) {
         </a>
         <a href="#measured-behavior">
           <span className="outcome-number">
-            {result.mismatch_count}
+            <Ticker value={result.mismatch_count} />
             <small> / {result.cases.length}</small>
           </span>
           <strong>Inputs with different outputs</strong>
@@ -58,7 +61,7 @@ export function OutcomeGuide({ run }: { run: ScenarioRun }) {
           className={unmet ? "has-unmet" : ""}
         >
           <span className="outcome-number">
-            {result.requirements.length ? unmet : "—"}
+            {result.requirements.length ? <Ticker value={unmet} /> : "—"}
           </span>
           <strong>Candidate requirement checks unmet</strong>
           <p>

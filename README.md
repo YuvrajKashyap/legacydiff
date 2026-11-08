@@ -1,121 +1,181 @@
 # LegacyDiff
 
-Turn a measured migration difference into a shared human decision and an executable acceptance test.
+Understand what changed in a rewrite. Decide what the software should do. Keep the tests that support that decision.
 
-The synthetic returns example executes a legacy implementation (`<= 30 days`) and a rewrite (`< 30 days`) against the same validated inputs. Two independent reviewers can discuss conflicting policy evidence, publish immutable proposal revisions, approve an exact revision, and observe the resulting real test failure or pass. The supplied corrected candidate is a separate immutable fixture, not an AI-generated repair.
+LegacyDiff runs old and new implementations on the same inputs, shows their actual outputs, and helps a team review the differences. NVIDIA Nemotron specialists explain the evidence. A human chooses the intended behavior and approves an exact version. Spacetime keeps the shared review in sync.
 
-## Side-by-side browsing
+![Comparisons workspace](docs/images/comparisons.png)
 
-Run `npm run browse` for Main and Working tabs; use `npm run browse:refresh` after merging to main. See [local previews](docs/LOCAL_PREVIEWS.md) for first-time worktree registration, shared workspace data and stop commands.
+## Why it exists
 
-## Local startup (Windows)
+A rewrite can copy an old bug or introduce a new one. Matching the old system is useful evidence, but the old system may be wrong.
 
-Requirements: Python 3.11+, npm, and Node. This checkout pins a project-local Node 24.22.1 executable for npm scripts and Spacetime CLI/server/SDK 2.14.1. The host Node 24.12 may emit an engine warning during installation; `npm exec -- node --version` must report 24.22.1 afterward. No account or paid service is needed for the deterministic flow.
+A return on day 30 might qualify under the handbook and fail under the migration ticket. A discount might apply twice. An invoice might bypass approval because the rewrite checks the amount before tax. Two permission systems can agree while both expose another customer's data.
 
-From the repository root:
+LegacyDiff keeps three questions separate:
+
+- What did each version actually return?
+- What does the approved policy say should happen?
+- Which independent requirements must both versions meet?
+
+A crash or timeout is an execution problem. Different outputs need investigation. A failed requirement means the code ran but broke a recorded rule.
+
+## A tour of the app
+
+### Comparisons and review queue
+
+All comparisons shows the saved runs. The review queue shows tickets waiting for a decision. Deferred tickets remain in All comparisons. History contains approved decisions and their validation results.
+
+The current local demo has ten saved comparisons and four awaiting review. These are local records, not data automatically installed in a fresh checkout.
+
+### Evidence and decisions
+
+Open a comparison to inspect the same input in both versions, exact output differences, independent requirements and pinned source evidence. Choose a saved candidate version, edit the intended behavior and rationale, then approve or defer. The final approval confirmation identifies the exact version and expectations.
+
+Changing the candidate does not transfer approval. A later proposal does not overwrite an earlier decision. Security requirements cannot be waived to achieve parity.
+
+![Comparison and review](docs/images/review.png)
+
+### The Lab
+
+An orchestrator coordinates three specialist conversations:
+
+| Role | Question |
+| --- | --- |
+| Behavior | What changed between the versions? |
+| Policy | What does the evidence say should happen? |
+| Regression | Which examples should protect that decision? |
+
+The Lab shows recorded model calls, tool activity, handoffs and saved findings. The animated connections illustrate the team structure. Status labels show what actually happened. Case chat lets reviewers ask follow-up questions using the comparison's saved context.
+
+Three model choices appear in the UI. Each becomes available only after the worker verifies its tool round trip. Availability depends on the provider. AI findings remain advice and can contain mistakes.
+
+![Agent investigation in The Lab](docs/images/lab.png)
+
+### Team review and guided demo
+
+Each ticket has a team chat. Server-side membership determines who can read and contribute. An owner admits a new identity and assigns its role. Only reviewers can approve. Stale or competing approvals are rejected.
+
+The Demo page tells the story through Alex, Sam and Riley in seven scenes. Play, pause, replay or move through the steps manually. It covers comparison setup, measured results, specialist investigation, case chat, collaboration, approval and export. The teammates and conversation are staged. Playback does not create real members, comments or approvals. Links open the actual saved comparison and The Lab.
+
+![Guided team walkthrough](docs/images/demo.png)
+
+## Four synthetic scenarios
+
+| Scenario | Review question | Authored inputs |
+| --- | --- | ---: |
+| Returns | Does the return window include day 30? | 96 |
+| Pricing | Does the unit price already include the discount? | 96 |
+| Accounts payable | Does the approval threshold use net or gross? | 96 |
+| Permissions | Do deny rules and tenant boundaries hold? | 96 |
+
+There are 384 distinct authored inputs. Multiple comparisons can reuse them with different source pairs. Results come from executing the reviewed fixtures. Supplied corrected candidates are separate versions, not automatic AI repairs. See [the fixture contracts](fixtures/SUITES.md).
+
+## Run locally on Windows
+
+You need Python 3.11 or later, npm and Node. The project pins Node 24.22.1 and Spacetime CLI, server and SDK 2.14.1. Setup downloads the pinned Spacetime tools and checks the archive hash.
 
 ```powershell
 powershell -File scripts/setup-local.ps1
 ```
 
-Start these in order, using separate terminals for long-running processes:
+Start the services in separate terminals:
 
 ```powershell
-# Terminal 1: persistent local database, bound to loopback only
+# Terminal 1: local database
 powershell -File scripts/start-database.ps1
 
-# Terminal 2: publish to that LOCAL database and generate bindings
+# Terminal 2: publish the local module, then start the worker
 powershell -File scripts/publish-local.ps1
-# Keep the private worker running
 npm run worker
 
 # Terminal 3: frontend
 npm run dev
 ```
 
-Open [the local app](http://127.0.0.1:5174). Worker health is [localhost:3001/health](http://127.0.0.1:3001/health). The worker bootstraps a separate identity using the existing local CLI publisher identity. Its token and database signing keys stay under ignored `.local/`; keep that directory private. Reuse it to preserve local identities/history. Do not clear database data to solve a migration conflict.
+Open [LegacyDiff locally](http://127.0.0.1:5174). Choose New comparison, select a scenario and source pair, then compare without AI or use an available model. No paid service or API key is needed for deterministic comparison.
 
-The first prototype database (`legacydiff-local`) was retained after a schema change; the current app uses `legacydiff-local-v2`. Both are local only.
+For AI, copy `.env.example` to `.env`, set `NVIDIA_API_KEY` in that ignored file and restart the worker. Never put the key in a `VITE_` variable or browser storage. Worker health is available at [localhost:3001/health](http://127.0.0.1:3001/health).
 
-## Two-person demonstration
+Keep `.local/` private. It holds local data and identities. Preserve it across restarts. Do not delete database data to resolve a migration conflict.
 
-1. Open the app in a normal browser profile. Start with the returns example and select **Run comparison without AI**. Both source files actually execute; day 30 differs by eligibility, refund, and reason.
-2. Copy **Share review room**. Open it in a second browser profile or private window, which gets a distinct Spacetime identity. Request admission with a label. In the owner's window, admit it as a reviewer. A label is not verified organizational identity.
-3. Publish an Include day 30 proposal with a rationale and both policy sources. The second participant can add a comment or pin evidence; confirmed changes appear in both windows.
-4. Open approval in B, publish a revised proposal in A, and observe the stale preview in B. Review the latest revision explicitly before approval. Local drafts survive.
-5. Approve and run tests. Original rewrite fails day 30. Exclude day 30 is a separate explicit policy option and can pass the rewrite. Defer creates no approved tests.
-6. Download the review ZIP after validation. Extract and run `python -I acceptance_tests.py`. A policy failure is the expected result for Include against the original rewrite; process exit 1 is not an export error.
-7. Run the supplied corrected candidate separately; preserve the original run/history. No differences means only no differences in the tested cases.
+### Main and Working previews
+
+For an existing registered preview checkout, run `npm run browse`. Main and Working share one saved workspace and backend. Main shows merged frontend code. Working shows current edits.
+
+- Working opens at `http://127.0.0.1:5174/`.
+- Main opens at `http://127.0.0.1:5174/main/`.
+- `npm run browse:refresh` updates the clean Main preview after a merge.
+- `npm run browse:stop` stops launcher-owned processes without deleting data.
+
+See [local preview setup](docs/LOCAL_PREVIEWS.md) for worktree registration. These links are local, so remote teammates cannot join through them.
+
+## Validate and export a decision
+
+1. Open a comparison and inspect its outputs and independent requirements.
+2. Select the version you want to review.
+3. Use EDIT to choose intended behavior, supporting evidence and a rationale.
+4. Choose APPROVE and confirm the exact expectations, or DEFER to leave the decision open.
+5. Inspect the actual acceptance results. Approval does not guarantee a passing candidate.
+6. Download the review bundle after validation and run its checks outside the UI.
+
+```powershell
+python -I acceptance_tests.py
+```
+
+A failing acceptance check is a meaningful result. For example, approving an inclusive day-30 rule against the exclusive rewrite should fail. Review the supplied corrected version separately.
+
+## Developer map
+
+| Folder | Owns |
+| --- | --- |
+| `frontend/` | React screens, styles, motion and local drafts |
+| `packages/client/` | Identity, authorized subscriptions and typed actions |
+| `packages/contracts/` | Shared data shapes and validation schemas |
+| `backend/database/` | Membership, approvals, receipts and job rules |
+| `backend/worker/` | Trusted job execution and authenticated exports |
+| `backend/ai/` | Nemotron orchestration and evidence tools |
+| `backend/runner/` | Python execution, comparison and acceptance checks |
+| `fixtures/` | Reviewed synthetic source files, inputs and policies |
+| `tests/` | Behavior, database, browser and export checks |
+| `docs/` | Requirements, architecture and verification evidence |
+
+Start with the [frontend guide](frontend/README.md), [backend guide](backend/README.md), [shared contracts](packages/README.md) and [architecture](docs/ARCHITECTURE.md). Frontend contributors can replace the UI while keeping authorization and execution in the backend. `AGENTS.md` contains the shared contributor instructions.
 
 ## Checks
 
 ```powershell
 npm run typecheck
 npm run lint
+npm run format:check
 npm test
 npm run test:python
 npm run build
-npm run test:e2e
 ```
 
-Database integration tests manually control worker claims. Stop the automatic worker first; keep the database running:
+Database integration tests require an isolated server on port 3012 with the current module published. They change the test provider catalog and must not run against your demo database. Do not run an automatic worker against that isolated server during these tests.
 
 ```powershell
+$env:LEGACYDIFF_DB_PORT='3012'
+$env:LEGACYDIFF_WORKER_PORT='3013'
+$env:LEGACYDIFF_WEB_PORT='5176'
 npm run test:integration
+# Optional real lease-expiry check takes about a minute
 $env:LEGACYDIFF_LEASE_TEST='1'
-npm run test:integration  # includes a real 60-second lease expiry
-Remove-Item Env:LEGACYDIFF_LEASE_TEST
-# Restart npm run worker before browser tests
+npm run test:integration
 ```
 
-`npm run test:e2e` requires the frontend, database, and worker already running. It uses independent browser contexts. Install the Playwright Chromium runtime if it is missing: `npx playwright install chromium`.
+Use a separate terminal for these environment overrides. The test files run sequentially because they share the isolated catalog. The browser suite is `npm run test:e2e` and needs the running local services and Playwright runtime. It creates test records, so use a disposable test workspace.
 
-For Python formatting/lint, the optional pinned Ruff dependency is in `backend/runner/requirements-dev.txt`. TypeScript formatting uses `npm run format` / `npm run format:check`. Runtime dependency auditing: `npm audit --omit=dev`.
+GitHub Actions checks types, lint, formatting, core tests, Python tests and the frontend build. Live database, browser and NVIDIA checks are separate. See [verification evidence](docs/VERIFICATION.md) for actual results and limitations.
 
-## Developer map
+## Current boundaries
 
-Start with `frontend/` for screens and `backend/` for all trusted behavior. `packages/` contains the shared integration boundary. Read the [frontend guide](frontend/README.md), [backend guide](backend/README.md), or [shared contract guide](packages/README.md) for a short reading order.
+- Execution accepts only reviewed, allowlisted and hash-verified bundled fixtures.
+- The local runner is a trusted-fixture fallback with reduced isolation. It is not an arbitrary-code sandbox.
+- The app is local. Public hosting, production data and arbitrary repository ingestion are outside this build.
+- AI suggestions do not approve policies, repair code or establish production readiness.
+- Differential testing does not establish complete security. Matching versions can share a defect.
+- Broader security testing, dependency analysis, stateful retries and concurrency inside migrated programs are separate capabilities.
 
-```text
-frontend/    React screens, components and styles
-backend/     Database rules, worker, AI and Python execution
-packages/    Browser client and shared contracts
-fixtures/    Authored synthetic inputs, source pairs and evidence
-tests/       Verification suites (deferred during current iteration)
-scripts/     Local startup and developer commands
-docs/        Requirements, architecture and recorded evidence
-```
-
-VS Code hides dependency folders, build output, caches and `.local` runtime data through repository settings. Those files still exist; nothing is deleted. Generated client bindings remain labeled under `packages/client/generated`.
-
-
-| Location | Responsibility |
-| --- | --- |
-| `frontend` | Replaceable React presentation, navigation, local drafts |
-| `packages/client` | Identity, authenticated subscriptions, readiness, typed actions; generated bindings isolated |
-| `packages/contracts` | UI DTOs, strict JSON schemas, reviewed expectation scope, wire conversions |
-| `backend/database/spacetimedb/src` | Authoritative rooms, membership, atomic approvals, receipts, leased jobs |
-| `backend/worker` | Private job execution, runner/provider integration, authenticated ZIP export |
-| `backend/ai` | Bounded four-role controller, NVIDIA adapter, pinned GitHub evidence retrieval |
-| `backend/runner` | Strict Python boundary, reviewed subprocesses, comparison, fixed test template, export |
-| `fixtures` | Four reviewed scenario families, 384 authored inputs, source variants and policy evidence |
-| `tests` | Behavioral, real-database, browser, and standalone-export verification |
-| `docs` | Requirements, decisions, evidence, integration limits, deployment/demo guidance |
-
-Start with [the client contract](packages/contracts/view-model.ts), [architecture](docs/ARCHITECTURE.md), and [frontend replacement guide](frontend/README.md). UI-only contributors may replace `frontend` without changing backend rules. Shared contracts and client lifecycle need coordinated tests. `AGENTS.md` is the shared instruction source; `CLAUDE.md` points to it.
-
-The [verification report](docs/VERIFICATION.md) distinguishes measured behavior, approved policy tests and independent product-security checks. The [fixture backlog](docs/FIXTURE_BACKLOG.md) distinguishes implemented scenarios from deferred proposals.
-
-## Live integrations and limits
-
-All three Nemotron choices are visible but disabled until their real tool round-trip smoke checks pass. Put `NVIDIA_API_KEY` only in the ignored root `.env` or private worker environment, then restart `npm run worker`. Never put it in `VITE_*`, browser storage, a prompt, or source control. The deterministic path remains available without NVIDIA.
-
-Account setup is now complete: a dedicated NVIDIA key is configured locally, and Ultra has passed live readiness. Readiness is reverified at worker startup; a prior success does not force-enable a model. Private hosted Spacetime `legacydiff-dev-v5iw5` is installed and paused for future hosting work. The active application continues to use the tested local database and private local worker.
-
-The repository was empty at clone time. The build branch is now published with explicit authorization. Existing runs retain their **Local fixture** evidence labels; publishing source does not change saved provenance or enable a GitHub-backed catalog automatically. No public application deployment or hackathon submission has been performed.
-
-GitHub Actions checks types, lint, formatting, TypeScript tests, Python tests and the frontend build on pull requests. Real-database, browser and NVIDIA checks require the local services described above and remain separate from hosted CI.
-
-Docker's engine was unavailable during the build. The current runner is explicitly a **trusted-fixture local fallback** with reduced isolation. It accepts only bundled allowlisted, hash-verified synthetic files. It is not an arbitrary-code sandbox or public execution service. See [runner controls](backend/runner/README.md) and [verification evidence](docs/VERIFICATION.md).
-
-The current local iteration adds returns, pricing, accounts payable and permissions with 96 authored synthetic inputs each (384 total). Choose **New comparison** in Working to select a scenario. Corpus comparisons, independent requirements, revision-bound policy approval and standalone exports are implemented but await the user-requested validation pass. No synthetic run results are prefilled. See [suite contracts](fixtures/SUITES.md).
+Screenshots show synthetic local records. They illustrate the interface and do not replace the recorded test evidence.

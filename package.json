@@ -10,7 +10,7 @@
     "test": "tsx --test tests/review.test.ts tests/investigation-retry.test.ts tests/client-connection.test.ts tests/architecture.test.ts tests/worker-runner.test.ts tests/worker-ai.test.ts tests/worker-evidence.test.ts backend/ai/*.test.ts frontend/src/presentation.test.ts tests/local-runtime.test.ts",
     "test:python": "python -m unittest discover -s tests/python -v",
     "worker": "tsx --env-file-if-exists=.env backend/worker/main.ts",
-    "test:integration": "tsx --test tests/integration.test.ts tests/scenario-integration.test.ts",
+    "test:integration": "tsx --test --test-concurrency=1 tests/integration.test.ts tests/scenario-integration.test.ts",
     "test:e2e": "playwright test",
     "lint": "eslint .",
     "format": "prettier --write frontend packages backend/ai backend/worker backend/database/spacetimedb/src tests/*.ts scripts/*.ts *.ts *.json",

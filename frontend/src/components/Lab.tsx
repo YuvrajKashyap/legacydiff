@@ -1,11 +1,17 @@
-import { AiText } from "./AiText";
 /** Show the real AI work behind a comparison, including calls and tools, without inventing progress. */
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import type { ScenarioRun } from "../../../packages/contracts/scenarios";
 import type { LegacyDiffState } from "../view-model";
 import { displayTime } from "../presentation";
+import { AiText } from "./AiText";
 import { InvestigationHistory } from "./InvestigationHistory";
-import { Badge, ErrorNotice } from "./Primitives";
+import {
+  OrchestrationGraph,
+  type GraphActivity,
+  type GraphRole,
+} from "./OrchestrationGraph";
+import { Badge, ErrorNotice, Icon } from "./Primitives";
+import { Cascade, Reveal, Section, Ticker } from "../motion/components";
 import "../styles/lab.css";
 
 type TraceEvent = NonNullable<ScenarioRun["aiTrace"]>[number];
@@ -140,6 +146,34 @@ export function Lab({
     : "Not recorded";
   const selectedEvents = trace.filter((event) => event.role === selectedRole);
   const role = roles.find((item) => item.id === selectedRole)!;
+  // Graph activity comes only from recorded trace rows; a role with nothing recorded stays idle.
+  const graphActivity = Object.fromEntries(
+    roles.map((item) => {
+      const own = trace.filter((event) => event.role === item.id);
+      const agent = own.find((event) => event.kind === "agent");
+      const recordedState = agent?.state;
+      const graphState: GraphActivity["state"] =
+        recordedState === "running" && !active
+          ? "stopped"
+          : recordedState === "running"
+            ? "running"
+            : recordedState === "failed"
+              ? "failed"
+              : recordedState === "completed"
+                ? "completed"
+                : own.length
+                  ? "queued"
+                  : "idle";
+      return [
+        item.id,
+        {
+          state: graphState,
+          modelCalls: own.filter((event) => event.kind === "model").length,
+          toolCalls: own.filter((event) => event.kind === "tool").length,
+        } satisfies GraphActivity,
+      ];
+    }),
+  ) as Record<GraphRole, GraphActivity>;
   async function investigate() {
     if (!run || !readyToInvestigate) return;
     setBusy(true);
@@ -181,25 +215,39 @@ export function Lab({
   }
   return (
     <div className="lab-page">
-      <header className="lab-heading">
+      <Section className="lab-heading" as="header">
         <div>
-          <span className="eyebrow">Inside the investigation</span>
-          <h1>
-            The Lab
-            <span className="lab-heading-dot" aria-hidden="true" />
-          </h1>
-          <p>
-            Follow the AI's work. Inspect the evidence. Keep the decision yours.
-          </p>
+          <Reveal effect="rise">
+            <span className="eyebrow">Inside the investigation</span>
+          </Reveal>
+          <Reveal effect="cascade" as="h1">
+            <Cascade text="The Lab" />
+            <span
+              className={`lab-heading-dot ${active ? "is-live" : ""}`}
+              aria-hidden="true"
+            />
+          </Reveal>
+          <Reveal effect="rise" delay={200}>
+            <p>
+              Follow the AI's work. Inspect the evidence.{" "}
+              <em className="serif">Keep the decision yours.</em>
+            </p>
+          </Reveal>
         </div>
-        <span className="lab-index">
-          4 roles
-          <br />
-          <small>one human decision</small>
-        </span>
-      </header>
-      <section className="lab-controls" aria-label="Investigation controls">
-        <div className="lab-choice">
+        <Reveal effect="focus-pull" delay={260} className="lab-index">
+          <span className="lab-index-number">4</span>
+          <span>
+            roles
+            <br />
+            <small>one human decision</small>
+          </span>
+        </Reveal>
+      </Section>
+      <Section
+        className="lab-controls panel"
+        aria-label="Investigation controls"
+      >
+        <Reveal effect="rise" className="lab-choice">
           <label htmlFor="lab-comparison">Saved comparison</label>
           <select
             id="lab-comparison"
@@ -229,8 +277,8 @@ export function Lab({
           <small>
             Uses existing measured results. No new comparison is created.
           </small>
-        </div>
-        <div className="lab-choice">
+        </Reveal>
+        <Reveal effect="rise" delay={90} className="lab-choice">
           <label htmlFor="lab-model">Investigation model</label>
           <select
             id="lab-model"
@@ -257,8 +305,8 @@ export function Lab({
                 ? "Available for a new investigation"
                 : model?.reason || "Waiting for model availability"}
           </small>
-        </div>
-        <div className="lab-start">
+        </Reveal>
+        <Reveal effect="rise" delay={180} className="lab-start">
           <button
             className="button-primary"
             disabled={!readyToInvestigate}
@@ -288,26 +336,32 @@ export function Lab({
                 : "Cancel investigation"}
             </button>
           )}
-        </div>
-      </section>
+        </Reveal>
+      </Section>
       <ErrorNotice message={error || currentAttempt?.diagnostic || ""} />
       {!run ? (
-        <section className="empty-state">
-          <h2>
-            {selectedRunId
-              ? "Comparison unavailable"
-              : "Start with a comparison"}
-          </h2>
-          <p>
-            {selectedRunId
-              ? "The selected comparison is not in the current authorized records."
-              : "Create a comparison and execute its examples first. Then choose it here to investigate the measured behavior."}
-          </p>
-        </section>
+        <Section className="empty-state panel">
+          <Reveal effect="deal-in">
+            <h2>
+              {selectedRunId
+                ? "Comparison unavailable"
+                : "Start with a comparison"}
+            </h2>
+            <p className="muted">
+              {selectedRunId
+                ? "The selected comparison is not in the current authorized records."
+                : "Create a comparison and execute its examples first. Then choose it here to investigate the measured behavior."}
+            </p>
+          </Reveal>
+          <OrchestrationGraph
+            mode="illustrative"
+            caption="Illustration of the fixed team shape. No activity is shown until an investigation runs."
+          />
+        </Section>
       ) : (
         <>
-          <div className="lab-run-heading">
-            <div>
+          <Section className="lab-run-heading">
+            <Reveal effect="unseal">
               <h2>{title}</h2>
               <p>
                 {run.manifest.title} ·{" "}
@@ -315,14 +369,14 @@ export function Lab({
                   ? `${run.comparison.cases.length} measured examples`
                   : "Waiting for measured results"}
               </p>
-            </div>
+            </Reveal>
             <button
-              className="text-button"
+              className="text-button lab-open"
               onClick={() => onOpen(run.roomId, run.id)}
             >
-              Open comparison & review →
+              Open comparison & review <Icon name="arrow" size={14} />
             </button>
-          </div>
+          </Section>
           <div className="lab-state-line" role="status">
             <Badge
               tone={
@@ -330,9 +384,14 @@ export function Lab({
                   ? "red"
                   : active
                     ? "teal"
-                    : "neutral"
+                    : attemptState === "completed"
+                      ? "green"
+                      : "neutral"
               }
             >
+              {active && (
+                <span className="live-dot live-dot--busy" aria-hidden="true" />
+              )}
               {attemptState ||
                 (alreadyStarted
                   ? "Requested · waiting for recorded activity"
@@ -344,63 +403,102 @@ export function Lab({
                 : "Nothing starts until you choose Investigate."}
             </span>
           </div>
-          <section className="lab-map" aria-label="AI team and recorded work">
+          <Section className="lab-map" aria-label="AI team and recorded work">
             <div className="lab-map-caption">
-              <span>TEAM MAP</span>
+              <span className="readout">Team map</span>
               <span>Choose a role to inspect its work</span>
             </div>
-            <div className="lab-tree">
-              <div className="lab-root">
-                <AgentNode
-                  role={roles[0]}
-                  events={trace}
-                  selected={selectedRole === "orchestrator"}
-                  active={active}
-                  onSelect={() => setSelectedRole("orchestrator")}
-                />
-              </div>
-              <div
-                className={`lab-branches ${run.investigationState === "running" && trace.some((event) => event.state === "running") ? "lab-branches--running" : ""}`}
-              >
-                {roles.slice(1).map((item) => (
-                  <div
-                    className={`lab-branch ${run.investigationState === "running" && trace.some((event) => event.role === item.id && event.state === "running") ? "is-running" : ""}`}
+            <Reveal effect="focus-pull">
+              <OrchestrationGraph
+                mode="live"
+                activity={graphActivity}
+                selected={selectedRole}
+                onSelect={(next) => setSelectedRole(next)}
+                caption={
+                  trace.length
+                    ? `${trace.length} recorded events · ${modelEvents.length} model calls`
+                    : "No activity recorded yet"
+                }
+              />
+            </Reveal>
+            <div className="lab-role-strip stagger">
+              {roles.map((item, index) => {
+                const own = trace.filter((event) => event.role === item.id);
+                const agent = own.find((event) => event.kind === "agent");
+                const status =
+                  agent?.state === "running" && !active
+                    ? "Last recorded: running"
+                    : agent?.state ||
+                      (own.length ? "Activity recorded" : "Not started");
+                return (
+                  <Reveal
+                    effect="deal-in"
                     key={item.id}
+                    style={{ "--i": index } as CSSProperties}
                   >
-                    <AgentNode
-                      role={item}
-                      events={trace}
-                      selected={selectedRole === item.id}
-                      active={active}
-                      onSelect={() => setSelectedRole(item.id)}
-                    />
-                  </div>
-                ))}
-              </div>
+                    <button
+                      className={`lab-agent ${selectedRole === item.id ? "is-selected" : ""} ${active && agent?.state === "running" ? "is-running" : ""}`}
+                      onClick={() => setSelectedRole(item.id)}
+                      aria-pressed={selectedRole === item.id}
+                      aria-label={`${item.name}, ${status}`}
+                    >
+                      <span className="lab-agent-top">
+                        <span className="lab-agent-number">{item.mark}</span>
+                        <span className="lab-agent-state">{status}</span>
+                      </span>
+                      <strong>{item.name}</strong>
+                      <span className="lab-agent-purpose">{item.purpose}</span>
+                      <span className="lab-agent-footer">
+                        <span>
+                          <Ticker
+                            value={
+                              own.filter((event) => event.kind === "model")
+                                .length
+                            }
+                          />{" "}
+                          model
+                        </span>
+                        <span>
+                          <Ticker
+                            value={
+                              own.filter((event) => event.kind === "tool")
+                                .length
+                            }
+                          />{" "}
+                          tool
+                        </span>
+                      </span>
+                    </button>
+                  </Reveal>
+                );
+              })}
             </div>
             <p className="lab-map-note">
               Three fixed specialists, each with its own conversation context.
               Model calls and tools are work inside those roles, not additional
               agents.
             </p>
-          </section>
-          <div className="lab-detail-grid">
-            <section className="lab-panel">
+          </Section>
+          <Section className="lab-detail-grid">
+            <Reveal effect="unseal" as="section" className="lab-panel panel">
               <div className="lab-panel-heading">
                 <div>
                   <span className="eyebrow">Selected role</span>
-                  <h2>{role.name}</h2>
+                  <h2 key={role.id} className="lab-role-title">
+                    {role.name}
+                  </h2>
                 </div>
-                <span className="lab-event-count">
+                <span className="lab-event-count readout">
                   {selectedEvents.length} recorded events
                 </span>
               </div>
               <p className="muted">{role.purpose}.</p>
               {selectedEvents.length ? (
-                <ol className="lab-events">
-                  {selectedEvents.map((event) => (
+                <ol className="lab-events" key={role.id}>
+                  {selectedEvents.map((event, index) => (
                     <TraceRow
                       key={event.id}
+                      index={index}
                       event={event}
                       parent={trace.find((item) => item.id === event.parentId)}
                     />
@@ -412,8 +510,13 @@ export function Lab({
                   assigned responsibility, not completed work.
                 </p>
               )}
-            </section>
-            <section className="lab-panel lab-summary">
+            </Reveal>
+            <Reveal
+              effect="unseal"
+              delay={140}
+              as="section"
+              className="lab-panel lab-summary panel"
+            >
               <span className="eyebrow">Recorded outcome</span>
               <h2>What the team found</h2>
               {summary.text ? (
@@ -451,10 +554,10 @@ export function Lab({
                 AI can explain evidence and suggest expectations. It cannot
                 approve the policy or turn a suggestion into a passing result.
               </p>
-            </section>
-          </div>
+            </Reveal>
+          </Section>
           <InvestigationHistory run={run} />
-          <details className="lab-panel lab-timeline">
+          <details className="lab-panel lab-timeline panel">
             <summary>
               Full activity record <span>{trace.length} events</span>
             </summary>
@@ -464,9 +567,10 @@ export function Lab({
             </p>
             {trace.length ? (
               <ol className="lab-events">
-                {trace.map((event) => (
+                {trace.map((event, index) => (
                   <TraceRow
                     key={event.id}
+                    index={index}
                     event={event}
                     parent={trace.find((item) => item.id === event.parentId)}
                   />
@@ -478,34 +582,39 @@ export function Lab({
           </details>
         </>
       )}
-      <section
-        className="lab-guide"
+      <Section
+        className="lab-guide stagger"
         aria-label="How investigation fits the review"
       >
-        <article>
-          <span>01 / OBSERVE</span>
-          <h3>Outputs</h3>
-          <p>
-            What the two source versions actually returned for the same input.
-          </p>
-        </article>
-        <article>
-          <span>02 / CHECK</span>
-          <h3>Requirements</h3>
-          <p>
-            Rules each version must meet. Code can run without crashing and
-            still break a rule.
-          </p>
-        </article>
-        <article>
-          <span>03 / DECIDE</span>
-          <h3>Approval</h3>
-          <p>
-            A human chooses the intended policy, previews exact examples, and
-            approves their tests.
-          </p>
-        </article>
-      </section>
+        {[
+          [
+            "01 / Observe",
+            "Outputs",
+            "What the two source versions actually returned for the same input.",
+          ],
+          [
+            "02 / Check",
+            "Requirements",
+            "Rules each version must meet. Code can run without crashing and still break a rule.",
+          ],
+          [
+            "03 / Decide",
+            "Approval",
+            "A human chooses the intended policy, previews exact examples, and approves their tests.",
+          ],
+        ].map(([mark, heading, text], index) => (
+          <Reveal
+            effect="blinds"
+            as="article"
+            key={mark}
+            style={{ "--i": index } as CSSProperties}
+          >
+            <span className="readout">{mark}</span>
+            <h3>{heading}</h3>
+            <p>{text}</p>
+          </Reveal>
+        ))}
+      </Section>
       <p className="lab-footnote">
         Execution is limited to reviewed bundled sources. An investigation may
         inspect up to 20 existing cases, make 24 tool calls and 8 model calls,
@@ -516,62 +625,33 @@ export function Lab({
   );
 }
 
-function AgentNode({
-  role,
-  events,
-  selected,
-  active,
-  onSelect,
-}: {
-  role: (typeof roles)[number];
-  events: TraceEvent[];
-  selected: boolean;
-  active: boolean;
-  onSelect: () => void;
-}) {
-  const ownEvents = events.filter((event) => event.role === role.id);
-  const agent = ownEvents.find((event) => event.kind === "agent");
-  const status =
-    agent?.state === "running" && !active
-      ? "Last recorded: running"
-      : agent?.state ||
-        (ownEvents.length ? "Activity recorded" : "Not started");
-  return (
-    <button
-      className={`lab-agent ${selected ? "is-selected" : ""} ${active && agent?.state === "running" ? "is-running" : ""}`}
-      onClick={onSelect}
-      aria-pressed={selected}
-      aria-label={`${role.name}, ${status}`}
-    >
-      <span className="lab-agent-top">
-        <span className="lab-agent-number">{role.mark}</span>
-        <span className="lab-agent-state">{status}</span>
-      </span>
-      <strong>{role.name}</strong>
-      <span className="lab-agent-purpose">{role.purpose}</span>
-      <span className="lab-agent-footer">
-        {ownEvents.filter((event) => event.kind === "model").length} model calls
-        · {ownEvents.filter((event) => event.kind === "tool").length} tool calls{" "}
-        <span aria-hidden="true">↗</span>
-      </span>
-    </button>
-  );
-}
-
 function TraceRow({
   event,
   parent,
+  index,
 }: {
   event: TraceEvent;
   parent?: TraceEvent;
+  index: number;
 }) {
   return (
-    <li className={`lab-event lab-event--${event.state}`}>
+    <li
+      className={`lab-event lab-event--${event.state} lab-event--${event.kind}`}
+      style={{ "--i": index } as CSSProperties}
+    >
       <details>
         <summary>
           <span className="lab-event-kind">{event.kind}</span>
           <strong>{event.label}</strong>
-          <Badge tone={event.state === "failed" ? "red" : "neutral"}>
+          <Badge
+            tone={
+              event.state === "failed"
+                ? "red"
+                : event.state === "running"
+                  ? "teal"
+                  : "neutral"
+            }
+          >
             {event.state}
           </Badge>
         </summary>
