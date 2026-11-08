@@ -1,8 +1,9 @@
 /** Let the user choose classic returns sources and a model, then start the comparison. */
 import { useState } from "react";
 import type { Actions, Catalog, RunAddress } from "../view-model";
+import { emitSignal } from "../motion";
 import { SourcePanel } from "./SourcePanel";
-import { Badge, Dialog, ErrorNotice } from "./Primitives";
+import { Badge, Dialog, ErrorNotice, Icon } from "./Primitives";
 
 export function SetupPanel({
   catalog,
@@ -59,10 +60,12 @@ export function SetupPanel({
         requestId,
         roomId,
       });
+      emitSignal("started");
       onStarted(address);
       onClose();
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : String(cause));
+      emitSignal("error");
     } finally {
       setBusy(false);
     }
@@ -76,12 +79,12 @@ export function SetupPanel({
             <Badge tone="teal">Synthetic example</Badge>
             <h3>Returns policy project</h3>
             <p>
-              Find the changed customer outcome. Decide which behavior should
-              survive.
+              Find the changed customer outcome.{" "}
+              <em className="serif">Decide which behavior should survive.</em>
             </p>
           </div>
           <span className="project-mark" aria-hidden="true">
-            ↔
+            <Icon name="compare" size={40} />
           </span>
         </div>
         <div className="form-grid">
@@ -149,7 +152,7 @@ export function SetupPanel({
           </legend>
           {catalog?.models.map((item) => (
             <label
-              className={`model-option ${modelId === item.id ? "is-selected" : ""}`}
+              className={`model-option ${modelId === item.id ? "is-selected" : ""} ${item.ready ? "" : "is-unavailable"}`}
               key={item.id}
             >
               <input
@@ -166,7 +169,10 @@ export function SetupPanel({
                   {item.ready ? "Verified ready for this session" : item.reason}
                 </small>
               </span>
-              <Badge tone={item.ready ? "teal" : "neutral"}>
+              <Badge tone={item.ready ? "green" : "neutral"}>
+                {item.ready && (
+                  <span className="live-dot live-dot--on" aria-hidden="true" />
+                )}
                 {item.ready ? "Ready" : "Unavailable"}
               </Badge>
             </label>
@@ -183,7 +189,9 @@ export function SetupPanel({
             Waiting for a current authorized subscription before creating work.
           </p>
         )}
-        {catalog && <p className="muted small">Runner: {catalog.runnerMode}</p>}
+        {catalog && (
+          <p className="muted small mono">Runner: {catalog.runnerMode}</p>
+        )}
       </div>
       <footer className="dialog-actions">
         <button onClick={onClose}>Cancel</button>

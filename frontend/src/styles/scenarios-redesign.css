@@ -1,0 +1,383 @@
+/* Redesign layer for the scenario workspace, outcome guide, findings, chat and demo. */
+.scenario-workspace {
+  gap: 22px;
+}
+.scenario-card,
+.scenario-dataset {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 240ms var(--ease-signal);
+}
+.scenario-card:hover {
+  border-color: var(--line-strong);
+}
+.scenario-card pre,
+.scenario-setup pre {
+  background: var(--bg-deep);
+  border: 1px solid var(--line);
+}
+.scenario-hash {
+  font-family: var(--mono);
+  color: var(--faint);
+}
+.scenario-option.is-selected {
+  border-color: var(--accent);
+}
+.outcome-guide {
+  border-top: 0;
+  padding: 0;
+}
+.outcome-intro h2 {
+  font-size: clamp(22px, 2.4vw, 32px);
+  letter-spacing: -0.03em;
+}
+.outcome-cards > a {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  transition:
+    transform 320ms var(--ease),
+    border-color 240ms var(--ease-signal),
+    box-shadow 320ms var(--ease);
+}
+.outcome-cards > a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgb(255 255 255 / 0.05) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+}
+.outcome-cards > a:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-glow);
+  box-shadow: var(--shadow);
+}
+.outcome-cards > a:hover::before {
+  transform: translateX(120%);
+  transition: transform 800ms var(--ease);
+}
+.outcome-cards > a.has-unmet {
+  border-top: 2px solid var(--danger);
+}
+.outcome-number {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 48px;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  text-shadow: 0 0 24px var(--accent-glow);
+  line-height: 1;
+}
+.has-unmet .outcome-number {
+  color: var(--danger);
+  text-shadow: 0 0 24px var(--danger-soft);
+}
+.outcome-number small {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 14px;
+  color: var(--muted);
+  text-shadow: none;
+}
+.workflow-jumps {
+  gap: 6px;
+}
+.workflow-jumps a {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  text-decoration: none;
+  font-size: 12px;
+  color: var(--ink-2);
+  transition: all 240ms var(--ease);
+}
+.workflow-jumps a:hover {
+  border-color: var(--accent-glow);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+.comparison-next-step {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+.comparison-next-step::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+  pointer-events: none;
+}
+.comparison-next-step h2 {
+  font-size: 24px;
+  letter-spacing: -0.025em;
+}
+.comparison-next-step aside {
+  border-left-color: var(--line);
+}
+.scenario-findings-list {
+  border-color: var(--line);
+  border-radius: var(--radius-sm);
+}
+.scenario-finding + .scenario-finding {
+  border-top-color: var(--line);
+}
+.scenario-finding > summary {
+  transition: background 200ms var(--ease-signal);
+}
+.scenario-finding > summary:hover {
+  background: var(--surface-2);
+}
+.scenario-finding-toggle {
+  color: var(--accent);
+  transition: transform 320ms var(--ease-overshoot);
+}
+.scenario-finding-body {
+  border-top-color: var(--line);
+}
+.scenario-case,
+.scenario-evidence,
+.scenario-comment,
+.scenario-decision,
+.scenario-requirement {
+  border-top-color: var(--line);
+}
+.scenario-case summary strong {
+  font-family: var(--mono);
+}
+.scenario-requirement {
+  border-left: 2px solid transparent;
+  padding-left: 10px;
+}
+.scenario-requirement:has(.badge--red) {
+  border-left-color: var(--danger);
+}
+.reviewer-actions {
+  position: sticky;
+  bottom: 12px;
+  z-index: 5;
+  background: var(--surface-glass);
+  backdrop-filter: blur(18px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow);
+}
+.button-approve,
+a.button-approve {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--pass) 80%, #fff 10%),
+    var(--pass)
+  );
+  border-color: transparent;
+  color: var(--bg-deep);
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-sm);
+}
+.button-approve:hover:not(:disabled),
+a.button-approve:hover {
+  box-shadow:
+    0 10px 30px var(--pass-soft),
+    0 0 0 1px var(--pass);
+  color: var(--bg-deep);
+}
+.button-defer {
+  background: transparent;
+  color: var(--danger);
+  border-color: color-mix(in srgb, var(--danger) 45%, transparent);
+  letter-spacing: 0.08em;
+}
+.button-defer:hover:not(:disabled) {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+.team-chat-members > span {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+}
+.team-chat-message {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius) var(--radius) var(--radius) 4px;
+  animation: page-enter 480ms var(--ease) both;
+}
+.team-chat-message.is-mine {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: var(--radius) var(--radius) 4px var(--radius);
+}
+.case-chat {
+  border-top: 2px solid var(--candidate);
+}
+.case-chat-turn {
+  border-color: var(--line);
+  border-radius: var(--radius);
+  animation: page-enter 480ms var(--ease) both;
+}
+.case-chat-question {
+  background: var(--surface-2);
+}
+.case-chat-answer {
+  border-top-color: var(--line);
+  position: relative;
+}
+.case-chat-answer header strong::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 7px;
+  background: var(--candidate);
+  box-shadow: 0 0 8px var(--candidate);
+}
+.case-chat-pending[role="status"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.case-chat-pending[role="status"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-soft);
+  border-top-color: var(--accent);
+  animation: spin 900ms linear infinite;
+}
+.investigation-history {
+  background: var(--surface);
+  border-color: var(--line);
+  border-radius: var(--radius);
+}
+.scenario-decision h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.scenario-output-grid > div > small,
+.scenario-output-grid h4 {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Demo page redesign. */
+.demo-page .demo-heading h1 {
+  letter-spacing: -0.04em;
+}
+.demo-page .demo-live {
+  border-color: var(--line);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.demo-page nav button[aria-current="step"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.demo-page .demo-stage,
+.demo-page .demo-cinema,
+.demo-page .demo-preview {
+  background: var(--surface);
+  border-color: var(--line);
+  border-radius: var(--radius);
+}
+.demo-page .demo-cinema {
+  box-shadow: var(--shadow);
+}
+.demo-page .demo-cinema-title {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+.demo-page .demo-person.is-active {
+  background: var(--surface-2);
+  border-color: var(--accent-glow);
+}
+.demo-page .demo-scene-message > div {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+.demo-page .demo-scene-message.is-current > div {
+  border-color: var(--accent-glow);
+}
+.demo-page .demo-review-handoff {
+  background: var(--baseline-soft);
+  border-color: var(--baseline-line);
+  color: var(--baseline);
+}
+.demo-page .demo-film-progress > span {
+  background: var(--surface-3);
+}
+.demo-page .demo-film-progress i {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+.demo-page .demo-agent-root {
+  border-color: var(--accent-glow);
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
+}
+.demo-page .demo-agent-grid > div,
+.demo-page .demo-pair > div,
+.demo-page .demo-chat-bubble {
+  background: var(--surface-2);
+  border-color: var(--line);
+  border-radius: var(--radius-sm);
+}
+.demo-page .demo-chat-answer {
+  border-left: 3px solid var(--candidate);
+}
+.demo-page .demo-notice {
+  background: var(--diff-soft);
+  border-left-color: var(--diff);
+  color: var(--diff);
+  border-radius: var(--radius-xs);
+}
+.demo-page .demo-tracks article {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition:
+    transform 300ms var(--ease),
+    border-color 240ms;
+}
+.demo-page .demo-tracks article:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-glow);
+}
+.demo-page .demo-metrics strong {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 34px;
+  color: var(--accent);
+}
+.demo-page .demo-contribution {
+  background: var(--surface-2);
+  border-left-color: var(--accent);
+}

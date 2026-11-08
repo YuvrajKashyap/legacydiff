@@ -37,7 +37,7 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   padding: 14px;
-  background: #f5f7fa;
+  background: var(--surface-2);
   border-radius: 6px;
 }
 .ai-text pre code {

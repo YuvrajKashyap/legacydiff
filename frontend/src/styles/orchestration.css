@@ -1,0 +1,261 @@
+/* The AI team wiring diagram. Packets travel only on edges that are active; hover isolates a role's wiring. */
+.orchestration {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 18px 18px 12px;
+  background:
+    radial-gradient(var(--grid-dot) 1px, transparent 1px) 0 0 / 22px 22px,
+    linear-gradient(180deg, var(--surface), var(--bg-deep));
+  overflow: hidden;
+}
+.orchestration::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    closest-side,
+    var(--accent-soft),
+    transparent 70%
+  );
+  opacity: 0.6;
+  pointer-events: none;
+  animation: drift 9s var(--ease-orbital) infinite;
+}
+.orchestration-svg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  font-family: var(--sans);
+}
+.orch-edge-base {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1.4;
+  transition: opacity 320ms var(--ease);
+}
+.orch-arrowhead {
+  fill: var(--line-strong);
+}
+.orch-edge-flow {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 14;
+  opacity: 0;
+  transition: opacity 400ms var(--ease);
+}
+.orch-edge.is-active .orch-edge-flow {
+  opacity: 0.55;
+  animation: dash 1.6s linear infinite;
+}
+.orch-edge--tool .orch-edge-flow {
+  stroke: var(--candidate);
+}
+.orch-edge--tool .orch-packet {
+  fill: var(--candidate);
+  filter: drop-shadow(0 0 6px var(--candidate));
+}
+.orch-packet {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+.orch-edge.is-dim,
+.orch-node.is-dim,
+.orch-tool.is-dim,
+.orch-input.is-dim,
+.orch-human.is-dim {
+  opacity: 0.22;
+}
+.orch-edge,
+.orch-node,
+.orch-tool,
+.orch-input,
+.orch-human {
+  transition: opacity 320ms var(--ease);
+}
+.orch-box {
+  fill: var(--surface-2);
+  stroke: var(--line-strong);
+  stroke-width: 1;
+  transition:
+    fill 240ms var(--ease-signal),
+    stroke 240ms var(--ease-signal);
+}
+.orch-box-edge {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  opacity: 0;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition:
+    opacity 300ms var(--ease),
+    stroke-dashoffset 900ms var(--ease);
+}
+.orch-box-glow {
+  fill: var(--accent-glow);
+  opacity: 0;
+  filter: url(#orch-glow);
+  transition: opacity 360ms var(--ease);
+}
+.is-clickable {
+  cursor: pointer;
+}
+.is-clickable:hover .orch-box,
+.is-clickable:focus-visible .orch-box,
+.orch-node.is-selected .orch-box {
+  fill: var(--surface-3);
+}
+.is-clickable:hover .orch-box-edge,
+.is-clickable:focus-visible .orch-box-edge,
+.orch-node.is-selected .orch-box-edge {
+  opacity: 1;
+  stroke-dashoffset: 0;
+}
+.orch-node.is-selected .orch-box-glow,
+.orch-node--running .orch-box-glow {
+  opacity: 0.55;
+}
+.orch-node:focus-visible {
+  outline: none;
+}
+.orch-node--orchestrator .orch-box {
+  stroke: var(--accent-glow);
+}
+.orch-node--behavior .orch-box-edge {
+  stroke: var(--baseline);
+}
+.orch-node--policy .orch-box-edge {
+  stroke: var(--diff);
+}
+.orch-node--regression .orch-box-edge {
+  stroke: var(--candidate);
+}
+.orch-node--completed .orch-state {
+  fill: var(--pass);
+}
+.orch-node--running .orch-state {
+  fill: var(--accent);
+}
+.orch-node--failed .orch-state {
+  fill: var(--danger);
+}
+.orch-node--failed .orch-box {
+  stroke: color-mix(in srgb, var(--danger) 50%, transparent);
+}
+.orch-mark,
+.orch-state,
+.orch-stats,
+.orch-tool-text,
+.orch-input-text,
+.orch-human-text {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--muted);
+}
+.orch-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  fill: var(--ink);
+}
+.orch-purpose {
+  font-size: 11.5px;
+  fill: var(--ink-2);
+}
+.orch-stats {
+  fill: var(--faint);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+.orch-node-pulse {
+  fill: var(--accent);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: breathe 1.2s var(--ease-orbital) infinite;
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+.orch-tool .orch-box {
+  fill: var(--bg-deep);
+  stroke: var(--candidate-line);
+  rx: 18;
+}
+.orch-tool-text {
+  fill: var(--candidate);
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 11.5px;
+}
+.orch-input .orch-box {
+  fill: var(--bg-deep);
+  stroke-dasharray: 4 4;
+}
+.orch-human .orch-box {
+  fill: var(--pass-soft);
+  stroke: color-mix(in srgb, var(--pass) 50%, transparent);
+}
+.orch-human-text {
+  fill: var(--pass);
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 12px;
+  font-weight: 600;
+}
+.orch-input-text {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 11.5px;
+  fill: var(--ink-2);
+}
+.orchestration-legend {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-top: 12px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.orchestration-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.orch-legend-swatch {
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+.orch-legend-swatch--tool {
+  background: var(--candidate);
+}
+.orch-legend-swatch--human {
+  background: var(--pass);
+}
+.orchestration-caption {
+  margin-left: auto;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+}
+.is-illustrative .orchestration-caption {
+  color: var(--diff);
+}
+@media (max-width: 760px) {
+  .orchestration {
+    padding: 12px 10px 10px;
+  }
+  .orchestration-caption {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}

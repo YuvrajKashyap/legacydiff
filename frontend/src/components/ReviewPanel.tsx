@@ -15,7 +15,8 @@ import {
   identityLabel,
   latestProposal,
 } from "../presentation";
-import { Badge, Dialog, ErrorNotice } from "./Primitives";
+import { emitSignal } from "../motion";
+import { Badge, Dialog, ErrorNotice, Icon } from "./Primitives";
 import { CaseTable } from "./CaseTable";
 
 interface Draft {
@@ -110,6 +111,7 @@ export function ReviewPanel({
       after?.();
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : String(cause));
+      emitSignal("error");
     } finally {
       setBusy(false);
     }
@@ -123,20 +125,23 @@ export function ReviewPanel({
         : [...current.evidenceIds, id],
     }));
   }
+  const draftComplete =
+    !!draft.choice && !!draft.rationale.trim() && draft.evidenceIds.length > 0;
 
   return (
     <section className="review-section">
       <div className="section-heading">
         <h3>Collaborative review</h3>
-        <Badge>
+        <Badge tone={proposal ? "plum" : "neutral"}>
           {proposal ? `Revision ${proposal.revision}` : "No proposal yet"}
         </Badge>
       </div>
       <p className="muted">
-        Observed behavior is evidence. A reviewer decides the intended rule.
+        Observed behavior is evidence.{" "}
+        <em className="serif">A reviewer decides the intended rule.</em>
       </p>
       {proposal && (
-        <article className="published-proposal">
+        <article className="published-proposal" key={proposal.revision}>
           <div className="section-heading">
             <strong>
               {proposal.choice === "include"
@@ -164,7 +169,7 @@ export function ReviewPanel({
                 })
               }
             >
-              Review proposal
+              <Icon name="shield" size={15} /> Review proposal
             </button>
             {!canReview && (
               <small>Only an admitted reviewer can approve.</small>
@@ -180,6 +185,11 @@ export function ReviewPanel({
       >
         <summary>
           {proposal ? "Publish a new revision" : "Draft a proposal"}
+          <span className="draft-steps" aria-hidden="true">
+            <i className={draft.choice ? "is-done" : ""} />
+            <i className={draft.rationale.trim() ? "is-done" : ""} />
+            <i className={draft.evidenceIds.length ? "is-done" : ""} />
+          </span>
         </summary>
         <fieldset className="choice-picker">
           <legend>Intended day-30 behavior</legend>
@@ -193,6 +203,7 @@ export function ReviewPanel({
             <span>
               <strong>Include day 30</strong>
               <small>Accept returns through the boundary.</small>
+              <code>age_days &lt;= 30</code>
             </span>
           </label>
           <label className={draft.choice === "exclude" ? "is-selected" : ""}>
@@ -205,6 +216,7 @@ export function ReviewPanel({
             <span>
               <strong>Exclude day 30</strong>
               <small>Accept returns before the boundary.</small>
+              <code>age_days &lt; 30</code>
             </span>
           </label>
         </fieldset>
@@ -222,7 +234,12 @@ export function ReviewPanel({
         <fieldset className="evidence-checks">
           <legend>Evidence included in this revision</legend>
           {run.evidence.map((item) => (
-            <label key={item.id}>
+            <label
+              key={item.id}
+              className={
+                draft.evidenceIds.includes(item.id) ? "is-selected" : ""
+              }
+            >
               <input
                 type="checkbox"
                 checked={draft.evidenceIds.includes(item.id)}
@@ -233,14 +250,8 @@ export function ReviewPanel({
           ))}
         </fieldset>
         <button
-          disabled={
-            !ready ||
-            busy ||
-            !draft.choice ||
-            !draft.rationale.trim() ||
-            !draft.evidenceIds.length ||
-            !catalog
-          }
+          className={draftComplete ? "button-primary" : ""}
+          disabled={!ready || busy || !draftComplete || !catalog}
           onClick={() =>
             setPublishPreview({ expectedRevision: proposal?.revision || 0 })
           }
@@ -263,7 +274,12 @@ export function ReviewPanel({
         {run.comments.map((item) => (
           <article className="comment" key={item.id}>
             <header>
-              <strong>{identityLabel(room, item.author)}</strong>
+              <strong>
+                <span className="comment-avatar" aria-hidden="true">
+                  {identityLabel(room, item.author).slice(0, 2).toUpperCase()}
+                </span>
+                {identityLabel(room, item.author)}
+              </strong>
               <time>{displayTime(item.createdAt)}</time>
             </header>
             <p>{item.text}</p>
@@ -338,8 +354,10 @@ export function ReviewPanel({
           wide
         >
           <div className="dialog-body">
-            <Badge>New revision {publishPreview.expectedRevision + 1}</Badge>
-            <h3>
+            <Badge tone="plum">
+              New revision {publishPreview.expectedRevision + 1}
+            </Badge>
+            <h3 className="preview-title">
               {draft.choice === "include" ? "Include day 30" : "Exclude day 30"}
             </h3>
             <p>{draft.rationale}</p>
@@ -373,7 +391,10 @@ export function ReviewPanel({
                       evidenceIds: draft.evidenceIds,
                       requestId: crypto.randomUUID(),
                     }),
-                  () => setPublishPreview(null),
+                  () => {
+                    setPublishPreview(null);
+                    emitSignal("published");
+                  },
                 )
               }
             >
@@ -394,11 +415,11 @@ export function ReviewPanel({
               <Badge tone="plum">
                 Exact revision {approval.proposal.revision}
               </Badge>
-              <span className="small muted">
+              <span className="small muted mono">
                 Current decision version {approval.decisionVersion}
               </span>
             </div>
-            <h3>
+            <h3 className="preview-title">
               {approval.proposal.choice === "include"
                 ? "Include day 30"
                 : "Exclude day 30"}
@@ -442,7 +463,10 @@ export function ReviewPanel({
                       expectedDecisionVersion: approval.decisionVersion,
                       requestId: crypto.randomUUID(),
                     }),
-                  () => setApproval(null),
+                  () => {
+                    setApproval(null);
+                    emitSignal("approved");
+                  },
                 )
               }
             >
