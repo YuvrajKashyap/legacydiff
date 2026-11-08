@@ -2,7 +2,7 @@
 
 Source: BUILD_REQUIREMENTS.md, supplied Page read November 8, 2026.
 
-Local checkout: C:\Users\ykyuv\dev\legacydiff. Origin: https://github.com/YuvrajKashyap/legacydiff.git. Empty remote, branch legacydiff-build. No publication authorized.
+Local checkout: C:\Users\ykyuv\dev\legacydiff. Origin: https://github.com/YuvrajKashyap/legacydiff.git. Branch legacydiff-build. Source publication and a reviewed merge to main were authorized on November 8, 2026; application deployment remains outside that authorization.
 
 1. Feasibility: Spacetime 2.14.1 local server/module, private authorized subscriptions, independent identities, Python execution, provider readiness.
 2. Deterministic comparison, collaborative revision/approval, leased validation, standalone export.

@@ -93,6 +93,8 @@ All three Nemotron choices are visible but disabled until their real tool round-
 
 Account setup is now complete: a dedicated NVIDIA key is configured locally, and Ultra has passed live readiness. Readiness is reverified at worker startup; a prior success does not force-enable a model. Private hosted Spacetime `legacydiff-dev-v5iw5` is installed and paused for future hosting work. The active application continues to use the tested local database and private local worker.
 
-The repository was empty at clone time. Evidence is labeled **Local fixture**. The pinned GitHub adapter is implemented, but a live fetch cannot be demonstrated until the artifacts exist at an explicitly authorized published commit. No push, public deployment, or hackathon submission has been performed.
+The repository was empty at clone time. The build branch is now published with explicit authorization. Existing runs retain their **Local fixture** evidence labels; publishing source does not change saved provenance or enable a GitHub-backed catalog automatically. No public application deployment or hackathon submission has been performed.
+
+GitHub Actions checks types, lint, formatting, TypeScript tests, Python tests and the frontend build on pull requests. Real-database, browser and NVIDIA checks require the local services described above and remain separate from hosted CI.
 
 Docker's engine was unavailable during the build. The current runner is explicitly a **trusted-fixture local fallback** with reduced isolation. It accepts only bundled allowlisted, hash-verified synthetic files. It is not an arbitrary-code sandbox or public execution service. See [runner controls](services/runner/README.md) and [verification evidence](docs/VERIFICATION.md).
