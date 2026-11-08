@@ -51,8 +51,14 @@ The modernization guide was accessible and read. Changes were limited to truthfu
 
 Final release checks also verified the actual NVIDIA key was absent from all staged files, the production frontend and the downloaded ZIP. All five staged fixture hashes match the manifest; Git enforces LF line endings. Local documentation links resolve. The final frontend is replaceable through the documented client contract; architecture tests prohibit server/worker/business-policy imports into the browser.
 
-## Visual refinement checkpoint � November 8, 2026
+## Visual refinement checkpoint — November 8, 2026
 
 Presentation-only refinement raises small supporting text to 12px, makes measured output values more prominent, aligns specialist status cards, improves long-title wrapping, and adds 44px mobile controls and 16px mobile text inputs. Existing frontend/backend boundaries remain unchanged.
 
 Inspected the actual saved live investigation, finding/evidence review and setup dialog in the in-app browser at desktop and 390px mobile width. Mobile document width remained within the viewport. Fresh checks: 39 TypeScript tests passed, one optional timeout test skipped; both browser workflows passed (15.6 seconds), including stale approvals, denied exports, mobile keyboard review and runnable export. Typecheck, lint, formatting and production/module builds passed. The existing Zod circular-dependency build warning remains. Backend/Python integration suites were not repeated for these CSS-only changes; their previous results above remain separate evidence.
+
+## Local side-by-side previews — November 8, 2026
+
+Replaced Vercel source setup with isolated Main (5175/3010/3011) and Working (5174/3000/3001) services. A managed detached worktree owns Main's database, keys, worker token and exports. Existing Working history and services were preserved. Provider credentials were not copied. The Vercel connector requires owner confirmation to delete the temporary remote project; deletion is not claimed.
+
+Fresh verification: 40 TypeScript tests passed, one optional timeout test skipped; typecheck, lint, formatting and production/module builds passed. Both end-to-end browser tests passed separately against Main (17.0s) and Working (16.6s), covering real comparison, collaboration, stale approval, validation, export and denied export access. Main and Working public signing keys differ. First startup, repeated startup and owned-process stop/restart were exercised without data deletion. The existing Zod circular-dependency warning remains. Python and database reducer integration suites were not separately repeated; the end-to-end suites exercised both real local databases/workers.
