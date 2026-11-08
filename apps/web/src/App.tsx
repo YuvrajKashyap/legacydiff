@@ -112,7 +112,7 @@ export default function App() {
           </span>
           <div>
             <strong>
-              {import.meta.env.VITE_INSTANCE_LABEL || "Working"} workspace
+              {import.meta.env.VITE_WORKSPACE_OWNER || "Working"} workspace
             </strong>
             <small title={state.identity}>
               {state.identity

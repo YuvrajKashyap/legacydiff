@@ -152,6 +152,7 @@ async function stack(cwd: string, label: "Main" | "Working") {
     VITE_SPACETIME_DATABASE: "legacydiff-local-v2",
     VITE_WORKER_URL: `http://127.0.0.1:${workerPort}`,
     VITE_INSTANCE_LABEL: label,
+    VITE_WORKSPACE_OWNER: main ? "YuvrajKashyap" : "Working",
     VITE_INSTANCE_REVISION: `${git(["rev-parse", "--short", "HEAD"], cwd)}${main ? "" : " · live changes"}`,
   };
   if (!(await listening(dbPort))) {
